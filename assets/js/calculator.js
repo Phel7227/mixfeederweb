@@ -73,7 +73,7 @@
     option.textContent = config.activity.options[key].label;
     el.activity.appendChild(option);
   });
-  el.activity.value = "normal";
+  el.activity.value = "low";
   function showActivityGuide() {
     setText(el.activityGuide, config.activity.options[el.activity.value].guide);
   }
