@@ -137,7 +137,8 @@
     var v = Number(el.manualValue.value.trim());
     if (el.manualValue.value.trim() === "" || isNaN(v) || v <= 0) return null;
     var unit = el.manualUnit.value;
-    var per100 = unit === "g" ? v * 100 : unit === "kg" ? v / 10 : v;
+    // 1 ounce = 28.3495 g, 1 lb = 453.592 g
+    var per100 = unit === "g" ? v * 100 : unit === "oz" ? v * 100 / 28.3495 : unit === "lb" ? v * 100 / 453.592 : v;
     return per100 <= 1000 ? per100 : null;
   }
   function manualProduct() {
