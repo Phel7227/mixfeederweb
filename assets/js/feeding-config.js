@@ -47,9 +47,9 @@ window.FEEDING_CONFIG = {
   activity: {
     label: "Activity level",
     options: {
-      low: { label: "Low", factor: 0.6, guide: "Less than 1 hour of activity a day. Short walks, mostly resting." },
-      normal: { label: "Normal", factor: 1.0, guide: "About 1 to 2 hours of activity a day. Daily walks and play." },
-      high: { label: "High", factor: 1.25, guide: "More than 2 hours of activity a day. Long walks, running, or a working or sport dog." }
+      low: { label: "1", factor: 0.6, guide: "Less than 1 hour of activity a day. Short walks, mostly resting." },
+      normal: { label: "2", factor: 1.0, guide: "About 1 to 2 hours of activity a day. Daily walks and play." },
+      high: { label: "3", factor: 1.25, guide: "More than 2 hours of activity a day. Long walks, running, or a working or sport dog." }
     }
   },
   // Feeding rate: daily food in grams for each weight band (lower bound inclusive, upper bound exclusive)
