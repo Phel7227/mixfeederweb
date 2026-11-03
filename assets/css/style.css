@@ -115,3 +115,15 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
   .field-row { grid-template-columns: 1fr; }
   .enquiry-form, .calc-results { padding: 22px; }
 }
+
+/* Two-column calculator: inputs on the left, results on the right */
+.calc-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.calc-side { position: sticky; top: 24px; }
+.calc-placeholder { background: #fff; border-radius: 10px; padding: 32px; border-top: 6px solid var(--blue); box-shadow: 0 6px 24px rgba(242, 189, 22, .18); color: var(--muted); }
+.calc-placeholder h2 { margin-top: 0; }
+.calc-placeholder p { margin: 0; }
+.calc-side .calc-results { margin-top: 0; }
+@media (max-width: 860px) {
+  .calc-layout { grid-template-columns: minmax(0, 1fr); }
+  .calc-side { position: static; }
+}

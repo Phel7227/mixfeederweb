@@ -21,6 +21,7 @@
     chosen: document.getElementById("calc-product-chosen"),
     error: document.getElementById("calc-error"),
     results: document.getElementById("calc-results"),
+    placeholder: document.getElementById("calc-placeholder"),
     admin: document.getElementById("calc-admin"),
     adminForm: document.getElementById("calc-admin-form"),
     adminStatus: document.getElementById("calc-admin-status"),
@@ -32,6 +33,12 @@
 
   function setText(node, text) {
     node.textContent = text;
+  }
+
+  // Results panel: the placeholder shows until there is something to show
+  function setResultsVisible(visible) {
+    el.results.hidden = !visible;
+    el.placeholder.hidden = visible;
   }
 
   function fieldError(id, message) {
@@ -68,6 +75,7 @@
       option.textContent = config.bodyShape.options[key].label;
       el.bodyShape.appendChild(option);
     });
+    el.bodyShape.value = "ideal";
   } else {
     el.bodyShape.disabled = true;
     var noShape = document.createElement("option");
@@ -91,7 +99,7 @@
   // Disclaimer gate: results stay hidden until the box is ticked
   el.accept.addEventListener("change", function () {
     if (!el.accept.checked) {
-      el.results.hidden = true;
+      setResultsVisible(false);
       el.results.innerHTML = "";
     }
   });
@@ -229,7 +237,7 @@
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     setText(el.error, "");
-    el.results.hidden = true;
+    setResultsVisible(false);
     el.results.innerHTML = "";
     if (!el.accept.checked) {
       return setText(el.error, "Tick the box to accept that this is a guide only before you see results.");
@@ -323,6 +331,6 @@
     note.className = "field-hint";
     setText(note, "Guide only. Figures are rounded to whole grams and the nearest 5 kcal.");
     el.results.appendChild(note);
-    el.results.hidden = false;
+    setResultsVisible(true);
   }
 })();

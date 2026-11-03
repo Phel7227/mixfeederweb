@@ -34,67 +34,77 @@
         <label for="calc-accept">I accept that this is a guide only and that the MixFeeder Calculator carries no responsibility for how I use these results.</label>
       </div>
     </div>
-    <form class="enquiry-form calc-form" id="calc-form" novalidate>
-      <h2>Your dog</h2>
-      <div class="field">
-        <label for="calc-weight">Weight (kg)</label>
-        <input id="calc-weight" name="weight" type="text" inputmode="decimal" autocomplete="off">
-        <p class="field-hint">From 0.5 to 90 kg</p>
-        <p class="field-error" id="calc-weight-err"></p>
-      </div>
-      <div class="field">
-        <label for="calc-factor">Life stage</label>
-        <select id="calc-factor" name="factor"></select>
-      </div>
-      <div class="field">
-        <label for="calc-shape">Body shape</label>
-        <select id="calc-shape" name="shape"></select>
-        <p class="field-hint">Fat lowers the calorie target. Skinny raises it.</p>
-        <p class="field-error" id="calc-shape-err"></p>
-      </div>
-
-      <h2>Feeding plan</h2>
-      <fieldset class="field" id="calc-style">
-        <legend>Feeding style</legend>
-        <div class="field check"><input id="style-barf" name="style" type="radio" value="barf"><label for="style-barf">BARF</label></div>
-        <div class="field check"><input id="style-8010" name="style" type="radio" value="80-10-10"><label for="style-8010">80/10/10</label></div>
-        <p class="field-error" id="calc-style-err"></p>
-      </fieldset>
-      <div class="field-row">
+    <div class="calc-layout">
+      <div class="calc-inputs">
+      <form class="enquiry-form calc-form" id="calc-form" novalidate>
+        <h2>Your dog</h2>
         <div class="field">
-          <label for="calc-raw">Raw share of daily calories (%)</label>
-          <input id="calc-raw" name="raw" type="text" inputmode="numeric" autocomplete="off">
-          <p class="field-error" id="calc-raw-err"></p>
+          <label for="calc-weight">Weight (kg)</label>
+          <input id="calc-weight" name="weight" type="text" inputmode="decimal" autocomplete="off">
+          <p class="field-hint">From 0.5 to 90 kg</p>
+          <p class="field-error" id="calc-weight-err"></p>
         </div>
         <div class="field">
-          <span class="field-label">Kibble share of daily calories (%)</span>
-          <p class="calc-kibble-pct" id="calc-kibble-pct" aria-live="polite"></p>
+          <label for="calc-factor">Life stage</label>
+          <select id="calc-factor" name="factor"></select>
         </div>
-      </div>
+        <div class="field">
+          <label for="calc-shape">Body shape</label>
+          <select id="calc-shape" name="shape"></select>
+          <p class="field-hint">Fat lowers the calorie target. Skinny raises it.</p>
+          <p class="field-error" id="calc-shape-err"></p>
+        </div>
 
-      <div class="field">
-        <label for="calc-basis">Raw calorie basis</label>
-        <select id="calc-basis" name="basis">
-          <option value="low">Lower calorie ingredients</option>
-          <option value="average" selected>Average</option>
-          <option value="high">Higher calorie ingredients</option>
-        </select>
-        <p class="field-hint">Ingredient calories vary. Average is the default. Pick lower or higher to see the amount for that end of the range.</p>
-      </div>
+        <h2>Feeding plan</h2>
+        <fieldset class="field" id="calc-style">
+          <legend>Feeding style</legend>
+          <div class="field check"><input id="style-barf" name="style" type="radio" value="barf"><label for="style-barf">BARF</label></div>
+          <div class="field check"><input id="style-8010" name="style" type="radio" value="80-10-10"><label for="style-8010">80/10/10</label></div>
+          <p class="field-error" id="calc-style-err"></p>
+        </fieldset>
+        <div class="field-row">
+          <div class="field">
+            <label for="calc-raw">Raw share of daily calories (%)</label>
+            <input id="calc-raw" name="raw" type="text" inputmode="numeric" autocomplete="off">
+            <p class="field-error" id="calc-raw-err"></p>
+          </div>
+          <div class="field">
+            <span class="field-label">Kibble share of daily calories (%)</span>
+            <p class="calc-kibble-pct" id="calc-kibble-pct" aria-live="polite"></p>
+          </div>
+        </div>
 
-      <h2>Kibble product</h2>
-      <div class="field">
-        <label for="calc-product-search">Brand and product name</label>
-        <input id="calc-product-search" type="text" autocomplete="off" placeholder="For example: brand name product">
-        <p class="field-hint">Only needed if you feed kibble. Matching products appear as you type.</p>
-        <ul class="product-results" id="calc-product-results"></ul>
-        <p class="field-hint" id="calc-product-chosen"></p>
-      </div>
+        <div class="field">
+          <label for="calc-basis">Raw calorie basis</label>
+          <select id="calc-basis" name="basis">
+            <option value="low">Lower calorie ingredients</option>
+            <option value="average" selected>Average</option>
+            <option value="high">Higher calorie ingredients</option>
+          </select>
+          <p class="field-hint">Ingredient calories vary. Average is the default. Pick lower or higher to see the amount for that end of the range.</p>
+        </div>
 
-      <p class="field-error" id="calc-error" role="alert"></p>
-      <button class="btn" type="submit">Calculate</button>
-    </form>
-    <section class="calc-results" id="calc-results" aria-live="polite" hidden></section>
+        <h2>Kibble product</h2>
+        <div class="field">
+          <label for="calc-product-search">Brand and product name</label>
+          <input id="calc-product-search" type="text" autocomplete="off" placeholder="For example: brand name product">
+          <p class="field-hint">Only needed if you feed kibble. Matching products appear as you type.</p>
+          <ul class="product-results" id="calc-product-results"></ul>
+          <p class="field-hint" id="calc-product-chosen"></p>
+        </div>
+
+        <p class="field-error" id="calc-error" role="alert"></p>
+        <button class="btn" type="submit">Calculate</button>
+      </form>
+      </div>
+      <aside class="calc-side" aria-label="Your results">
+        <div class="calc-placeholder" id="calc-placeholder">
+          <h2>Your results</h2>
+          <p>Fill in your dog's details and tick the box to see the daily calorie target, the kibble and raw split, and the raw recipe here.</p>
+        </div>
+        <section class="calc-results" id="calc-results" aria-live="polite" hidden></section>
+      </aside>
+    </div>
     <section class="calc-admin enquiry-form" id="calc-admin" hidden>
       <h2>Admin: kibble products</h2>
       <form id="calc-admin-form" novalidate>
