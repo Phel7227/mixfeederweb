@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MixFeeder Calculator</title>
 <meta name="description" content="Estimate your dog's daily calories and raw or kibble portions. A guide only.">
-<link rel="stylesheet" href="assets/css/style.css?v=2026110501">
+<link rel="stylesheet" href="assets/css/style.css?v=2026110503">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -51,7 +51,7 @@
         <details class="shape-guide">
           <summary>Not sure which shape? Compare body condition scores</summary>
           <p class="field-hint">Body condition score runs from 1 (very thin) to 5 (heavy). A score of 3 is ideal. Run your hand along the ribs with light pressure, then look at your dog from above and from the side.</p>
-          <img class="waist-figure" src="assets/img/body-scale.png?v=2026110501" alt="Five dogs from very thin to heavy, each shown from above and from the side. The middle dog is marked 5.">
+          <img class="waist-figure" src="assets/img/body-scale.png?v=2026110503" alt="Five dogs from very thin to heavy, each shown from above and from the side. The middle dog is marked 5.">
           <table class="shape-table">
             <caption class="sr-only">Body condition score, how the ribs feel, and the body shape option it matches</caption>
             <thead>
@@ -128,13 +128,38 @@
         <p class="field-error" id="calc-treat-err"></p>
       </div>
 
-      <h2>Kibble product</h2>
+      <h2>Kibble</h2>
+        <fieldset class="field" id="calc-kibble-source">
+          <legend>How to give the kibble's calories</legend>
+          <div class="field check"><input id="source-product" name="kibble_source" type="radio" value="product" checked><label for="source-product">Search a product</label></div>
+          <div class="field check"><input id="source-manual" name="kibble_source" type="radio" value="manual"><label for="source-manual">Enter the calories myself</label></div>
+        </fieldset>
+        <div id="calc-product-fields">
         <div class="field">
           <label for="calc-product-search">Brand and product name</label>
           <input id="calc-product-search" type="text" autocomplete="off" placeholder="For example: ZIWI Peak Air-Dried Venison Dog Food">
           <p class="field-hint">Only needed if you feed kibble. Matching products appear as you type.</p>
           <ul class="product-results" id="calc-product-results"></ul>
           <p class="field-hint" id="calc-product-chosen"></p>
+        </div>
+        </div>
+        <div id="calc-manual-fields" hidden>
+          <div class="field-row">
+            <div class="field">
+              <label for="calc-manual-value">Calories</label>
+              <input id="calc-manual-value" name="manualValue" type="text" inputmode="decimal" autocomplete="off">
+              <p class="field-error" id="calc-manual-value-err"></p>
+            </div>
+            <div class="field">
+              <label for="calc-manual-unit">Unit</label>
+              <select id="calc-manual-unit" name="manualUnit">
+                <option value="g">kcal per g</option>
+                <option value="100g" selected>kcal per 100 g</option>
+                <option value="kg">kcal per kg</option>
+              </select>
+            </div>
+          </div>
+          <p class="field-hint">Use the value on the bag or the shop listing. For example, 3.9 kcal per g is 390 kcal per 100 g.</p>
         </div>
 
         <div class="field check calc-consent">
@@ -157,8 +182,8 @@
   </div>
 </section>
 </main>
-<script src="assets/js/feeding-config.js?v=2026110501"></script>
-<script src="assets/js/calculator-core.js?v=2026110501"></script>
-<script src="assets/js/calculator.js?v=2026110501"></script>
+<script src="assets/js/feeding-config.js?v=2026110503"></script>
+<script src="assets/js/calculator-core.js?v=2026110503"></script>
+<script src="assets/js/calculator.js?v=2026110503"></script>
 </body>
 </html>

@@ -18,6 +18,10 @@
     percentFields: document.getElementById("calc-percent-fields"),
     gramsFields: document.getElementById("calc-grams-fields"),
     kibbleG: document.getElementById("calc-kibble-g"),
+    productFields: document.getElementById("calc-product-fields"),
+    manualFields: document.getElementById("calc-manual-fields"),
+    manualValue: document.getElementById("calc-manual-value"),
+    manualUnit: document.getElementById("calc-manual-unit"),
     treat: document.getElementById("calc-treat"),
     kibblePct: document.getElementById("calc-kibble-pct"),
     styleInputs: form.querySelectorAll('input[name="style"]'),
@@ -113,6 +117,33 @@
     var checked = form.querySelector('input[name="mode"]:checked');
     return checked ? checked.value : "percent";
   }
+  // Kibble calories: search a product, or enter them by hand
+  function kibbleSource() {
+    var checked = form.querySelector('input[name="kibble_source"]:checked');
+    return checked ? checked.value : "product";
+  }
+  function applyKibbleSource() {
+    var manual = kibbleSource() === "manual";
+    el.productFields.hidden = manual;
+    el.manualFields.hidden = !manual;
+  }
+  form.querySelectorAll('input[name="kibble_source"]').forEach(function (radio) {
+    radio.addEventListener("change", applyKibbleSource);
+  });
+  applyKibbleSource();
+
+  // The entered value as kcal per 100 g, or null when it is not a usable number
+  function manualKcalPer100g() {
+    var v = Number(el.manualValue.value.trim());
+    if (el.manualValue.value.trim() === "" || isNaN(v) || v <= 0) return null;
+    var unit = el.manualUnit.value;
+    var per100 = unit === "g" ? v * 100 : unit === "kg" ? v / 10 : v;
+    return per100 <= 1000 ? per100 : null;
+  }
+  function manualProduct() {
+    return { brand: "Entered", name: "kibble calories", kcal_per_100g: manualKcalPer100g(), source: "entered by user" };
+  }
+
   function applyMode() {
     var grams = currentMode() === "grams";
     el.percentFields.hidden = grams;
@@ -208,6 +239,10 @@
     }
     ok = fieldError("calc-treat", treat === "" || !/^\d+$/.test(treat) || Number(treat) > 30
       ? "Enter treats as a whole number from 0 to 30." : "") && ok;
+    if (kibbleSource() === "manual") {
+      ok = fieldError("calc-manual-value", manualKcalPer100g() === null
+        ? "Enter the kibble calories as a number above zero (up to 1000 kcal per 100 g)." : "") && ok;
+    }
     ok = fieldError("calc-style", selectedStyle() ? "" : "Choose a feeding style.") && ok;
     ok = fieldError("calc-shape", el.bodyShape.value ? "" : "Choose the body shape.") && ok;
     return ok;
@@ -233,7 +268,7 @@
       factorKey: el.factor.value,
       activity: el.activity.value,
       bodyShape: el.bodyShape.value
-    }, config, selectedProduct);
+    }, config, kibbleSource() === "manual" ? manualProduct() : selectedProduct);
 
     if (outcome.status === "pending") {
       var reasons = {
@@ -262,7 +297,7 @@
       Math.round(o.excessKcal) + " kcal too much.");
     el.results.appendChild(msg);
     var fit = document.createElement("p");
-    setText(fit, "The most " + o.kibbleProduct.brand + " " + o.kibbleProduct.name + " that fits is about " +
+    setText(fit, "The most kibble that fits is about " +
       o.maxKibbleGrams + " g a day, with no raw food left over. Enter a lower weight, or add raw food by using the percentage option.");
     el.results.appendChild(fit);
     setResultsVisible(true);
@@ -295,7 +330,7 @@
     }
     el.results.appendChild(summary);
 
-    if (r.kibbleKcal > 0 && r.kibbleProduct) {
+    if (r.kibbleKcal > 0 && r.kibbleProduct && r.kibbleProduct.source !== "entered by user") {
       var guide = core.productGuideFor(r.kibbleProduct, Number(el.weight.value));
       var guideNote = document.createElement("p");
       guideNote.className = "field-hint";
