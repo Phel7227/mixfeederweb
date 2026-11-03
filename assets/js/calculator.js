@@ -12,7 +12,6 @@
     weight: document.getElementById("calc-weight"),
     factor: document.getElementById("calc-factor"),
     bodyShape: document.getElementById("calc-shape"),
-    basis: document.getElementById("calc-basis"),
     rawPct: document.getElementById("calc-raw"),
     treat: document.getElementById("calc-treat"),
     kibblePct: document.getElementById("calc-kibble-pct"),
@@ -254,8 +253,7 @@
       treatPct: Number(el.treat.value),
       style: selectedStyle(),
       factorKey: el.factor.value,
-      bodyShape: el.bodyShape.value,
-      basis: el.basis.value
+      bodyShape: el.bodyShape.value
     }, config, selectedProduct);
 
     if (outcome.status === "pending") {
@@ -272,8 +270,6 @@
     if (outcome.status !== "ok") return setText(el.error, outcome.error || "Something went wrong.");
     renderResults(outcome);
   });
-
-  var BASIS_LABELS = { low: "lower calorie", average: "average", high: "higher calorie" };
 
   function row(label, value) {
     var li = document.createElement("li");
@@ -321,15 +317,18 @@
       raw.appendChild(row("Amount", r.rawGrams + " g"));
       var basis = document.createElement("p");
       basis.className = "field-hint";
-      setText(basis, "Basis: " + Math.round(r.rawKcalPer100g) + " kcal per 100g (" + BASIS_LABELS[r.basis] +
-        " of a " + Math.round(r.rawKcalRange.low) + " to " + Math.round(r.rawKcalRange.high) +
-        " kcal per 100g range), blended from the " + r.styleLabel + " ingredient split.");
+      setText(basis, "Calculated on the average calorie value of each ingredient: " + Math.round(r.rawKcalPer100g) +
+        " kcal per 100g for the " + r.styleLabel + " mix.");
       raw.appendChild(basis);
       var range = document.createElement("p");
       range.className = "field-hint";
       setText(range, "Across the full calorie range the raw amount is " + r.rawGramsRange.min + " to " +
         r.rawGramsRange.max + " g.");
       raw.appendChild(range);
+      var meatNote = document.createElement("p");
+      meatNote.className = "field-hint";
+      setText(meatNote, "Calories differ between meats, so the real amount may vary. Check the label of the meat you feed.");
+      raw.appendChild(meatNote);
       var list = document.createElement("ul");
       r.recipe.forEach(function (item) { list.appendChild(row(item.label, item.grams + " g")); });
       raw.appendChild(list);

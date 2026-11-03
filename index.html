@@ -29,10 +29,6 @@
     <p class="intro">Enter your dog's details and feeding plan to see a daily calorie target, the kibble and raw split, and a raw recipe in grams.</p>
     <div class="calc-disclaimer" role="note">
       <p><strong>This calculator is a guide only.</strong> The figures are estimates to help you plan your dog's feeding. Check any change to your dog's diet with your vet.</p>
-      <div class="field check">
-        <input id="calc-accept" name="accept" type="checkbox" value="yes">
-        <label for="calc-accept">I accept that this is a guide only and that the MixFeeder Calculator carries no responsibility for how I use these results.</label>
-      </div>
     </div>
     <div class="calc-layout">
       <div class="calc-inputs">
@@ -114,16 +110,6 @@
         </div>
 
         <div class="field">
-          <label for="calc-basis">Raw calorie basis</label>
-          <select id="calc-basis" name="basis">
-            <option value="low">Lower calorie ingredients</option>
-            <option value="average" selected>Average</option>
-            <option value="high">Higher calorie ingredients</option>
-          </select>
-          <p class="field-hint">Ingredient calories vary. Average is the default. Pick lower or higher to see the amount for that end of the range.</p>
-        </div>
-
-        <div class="field">
         <label for="calc-treat">Treats (% of daily calories)</label>
         <input id="calc-treat" name="treat" type="text" inputmode="numeric" autocomplete="off" value="0">
         <p class="field-hint">From 0 to 30. Treats should not exceed 10% of daily calories.</p>
@@ -139,6 +125,10 @@
           <p class="field-hint" id="calc-product-chosen"></p>
         </div>
 
+        <div class="field check calc-consent">
+          <input id="calc-accept" name="accept" type="checkbox" value="yes">
+          <label for="calc-accept">I accept that this is a guide only and that the MixFeeder Calculator carries no responsibility for how I use these results.</label>
+        </div>
         <p class="field-error" id="calc-error" role="alert"></p>
         <button class="btn" type="submit">Calculate</button>
       </form>

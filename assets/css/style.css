@@ -34,9 +34,9 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 
 /* Header */
 .site-header { background: var(--yellow); color: var(--ink); border-bottom: 4px solid var(--blue); }
-.site-header .container { display: flex; align-items: center; height: 52px; }
-.brand { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 16px; letter-spacing: .3px; }
-.brand-icon { display: inline-block; width: 30px; height: 26px; margin-right: 8px; vertical-align: middle; background: url("../img/dog-silhouette.svg") center / contain no-repeat; }
+.site-header .container { display: flex; align-items: center; height: 44px; }
+.brand { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 14px; letter-spacing: .3px; }
+.brand-icon { display: inline-block; width: 24px; height: 20px; margin-right: 6px; vertical-align: middle; background: url("../img/dog-silhouette.svg") center / contain no-repeat; }
 
 /* Hero */
 .hero { position: relative; background: var(--yellow); border-bottom: 1px solid var(--yellow-dark); }
@@ -138,3 +138,5 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 .shape-table td:first-child { font-weight: 700; width: 56px; }
 .waist-figure { width: 100%; height: auto; margin: 4px 0 14px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.calc-consent { margin: 4px 0 18px; }
