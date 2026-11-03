@@ -113,6 +113,27 @@ test("with no treats the food is the whole target", () => {
   assert.equal(r.foodKcal, r.derKcal);
 });
 
+test("grams mode: kibble calories come from the weight and the product, and raw takes the rest", () => {
+  const r = core.calculate(input({ mode: "grams", kibbleGrams: 100, rawPct: undefined, treatPct: 10 }), CONFIRMED, PRODUCT);
+  assert.equal(r.status, "ok");
+  assert.equal(r.kibbleKcal, core.roundTo(100 * 400 / 100, 5));
+  assert.equal(r.kibbleGrams, 100);
+  assert.equal(r.kibbleKcal + r.rawKcal + r.treatKcal, r.derKcal);
+  assert.equal(r.kibblePct + r.rawPct, 100);
+});
+
+test("grams mode: too much kibble returns over, with the largest weight that fits", () => {
+  const r = core.calculate(input({ mode: "grams", kibbleGrams: 1000, treatPct: 0 }), CONFIRMED, PRODUCT);
+  assert.equal(r.status, "over");
+  assert.ok(r.excessKcal > 0);
+  assert.equal(r.maxKibbleGrams, Math.floor(r.foodKcal * 100 / 400));
+  assert.ok(r.maxKibbleGrams * 400 / 100 <= r.foodKcal);
+});
+
+test("grams mode needs a kibble product", () => {
+  assert.equal(core.calculate(input({ mode: "grams", kibbleGrams: 100 }), CONFIRMED, null).status, "needs_product");
+});
+
 test("kibble and raw kcal add up to the daily target", () => {
   const r = core.calculate(input({ rawPct: 30 }), CONFIRMED, PRODUCT);
   assert.equal(r.status, "ok");

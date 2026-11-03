@@ -13,6 +13,9 @@
     factor: document.getElementById("calc-factor"),
     bodyShape: document.getElementById("calc-shape"),
     rawPct: document.getElementById("calc-raw"),
+    percentFields: document.getElementById("calc-percent-fields"),
+    gramsFields: document.getElementById("calc-grams-fields"),
+    kibbleG: document.getElementById("calc-kibble-g"),
     treat: document.getElementById("calc-treat"),
     kibblePct: document.getElementById("calc-kibble-pct"),
     styleInputs: form.querySelectorAll('input[name="style"]'),
@@ -94,6 +97,21 @@
     setText(el.kibblePct, Number.isInteger(raw) && raw >= 0 && raw <= 100 ? String(100 - raw) : "");
   }
   el.rawPct.addEventListener("input", updateKibblePct);
+
+  // Kibble entry mode: by percentage of food calories, or by kibble weight in grams
+  function currentMode() {
+    var checked = form.querySelector('input[name="mode"]:checked');
+    return checked ? checked.value : "percent";
+  }
+  function applyMode() {
+    var grams = currentMode() === "grams";
+    el.percentFields.hidden = grams;
+    el.gramsFields.hidden = !grams;
+  }
+  form.querySelectorAll('input[name="mode"]').forEach(function (radio) {
+    radio.addEventListener("change", applyMode);
+  });
+  applyMode();
   updateKibblePct();
 
   // Disclaimer gate: results stay hidden until the box is ticked
@@ -228,8 +246,14 @@
     var w = Number(weight);
     ok = fieldError("calc-weight", weight === "" || isNaN(w) || w < 0.5 || w > 90
       ? "Enter the weight in kg (0.5 to 90)." : "") && ok;
-    ok = fieldError("calc-raw", raw === "" || !/^\d+$/.test(raw) || Number(raw) > 100
-      ? "Enter the raw share as a whole number from 0 to 100." : "") && ok;
+    if (currentMode() === "percent") {
+      ok = fieldError("calc-raw", raw === "" || !/^\d+$/.test(raw) || Number(raw) > 100
+        ? "Enter the raw share as a whole number from 0 to 100." : "") && ok;
+    } else {
+      var grams = el.kibbleG.value.trim();
+      ok = fieldError("calc-kibble-g", grams === "" || isNaN(Number(grams)) || Number(grams) < 0 || Number(grams) > 5000
+        ? "Enter the kibble weight in grams (0 to 5000)." : "") && ok;
+    }
     ok = fieldError("calc-treat", treat === "" || !/^\d+$/.test(treat) || Number(treat) > 30
       ? "Enter treats as a whole number from 0 to 30." : "") && ok;
     ok = fieldError("calc-style", selectedStyle() ? "" : "Choose a feeding style.") && ok;
@@ -249,7 +273,9 @@
 
     var outcome = core.calculate({
       weightKg: Number(el.weight.value),
+      mode: currentMode(),
       rawPct: Number(el.rawPct.value),
+      kibbleGrams: Number(el.kibbleG.value),
       treatPct: Number(el.treat.value),
       style: selectedStyle(),
       factorKey: el.factor.value,
@@ -264,12 +290,30 @@
       };
       return setText(el.error, reasons[outcome.missing]);
     }
+    if (outcome.status === "over") return renderOver(outcome);
     if (outcome.status === "needs_product") {
       return setText(el.error, "Choose a kibble product so the kibble grams can be shown.");
     }
     if (outcome.status !== "ok") return setText(el.error, outcome.error || "Something went wrong.");
     renderResults(outcome);
   });
+
+  // Kibble weight too high for the daily target: say so in the results, with the most that fits
+  function renderOver(o) {
+    var heading = document.createElement("h2");
+    setText(heading, "Too much kibble for today");
+    el.results.appendChild(heading);
+    var msg = document.createElement("p");
+    setText(msg, "This kibble weight gives " + Math.round(o.kibbleKcal) + " kcal, but only " +
+      Math.round(o.foodKcal) + " kcal is left in the daily target after treats. The kibble is " +
+      Math.round(o.excessKcal) + " kcal too much.");
+    el.results.appendChild(msg);
+    var fit = document.createElement("p");
+    setText(fit, "The most " + o.kibbleProduct.brand + " " + o.kibbleProduct.name + " that fits is about " +
+      o.maxKibbleGrams + " g a day, with no raw food left over. Enter a lower weight, or add raw food by using the percentage option.");
+    el.results.appendChild(fit);
+    setResultsVisible(true);
+  }
 
   function row(label, value) {
     var li = document.createElement("li");

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MixFeeder Calculator</title>
 <meta name="description" content="Estimate your dog's daily calories and raw or kibble portions. A guide only.">
-<link rel="stylesheet" href="assets/css/style.css?v=20261104h">
+<link rel="stylesheet" href="assets/css/style.css?v=20261104i">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -16,7 +16,7 @@
       <h1>MixFeeder Calculator</h1>
       <p>Work out how to balance your dog's daily calories with a mixed raw and kibble diet, including a raw recipe in grams.</p>
     </div>
-    <img src="assets/img/dog-poodle-steak.png?v=20261104h" alt="Fluffy cream dog asleep with its head on a steak, beside a bowl of kibble" width="420" height="281">
+    <img src="assets/img/dog-poodle-steak.png?v=20261104i" alt="Fluffy cream dog asleep with its head on a steak, beside a bowl of kibble" width="420" height="281">
   </div>
 </section>
 <section class="section calc">
@@ -48,7 +48,7 @@
         <details class="shape-guide">
           <summary>Not sure which shape? Compare body condition scores</summary>
           <p class="field-hint">Body condition score runs from 1 (very thin) to 5 (heavy). A score of 3 is ideal. Run your hand along the ribs with light pressure, then look at your dog from above and from the side.</p>
-          <img class="waist-figure" src="assets/img/body-scale.png?v=20261104h" alt="Five dogs from very thin to heavy, each shown from above and from the side. The middle dog is marked 5.">
+          <img class="waist-figure" src="assets/img/body-scale.png?v=20261104i" alt="Five dogs from very thin to heavy, each shown from above and from the side. The middle dog is marked 5.">
           <table class="shape-table">
             <caption class="sr-only">Body condition score, how the ribs feel, and the body shape option it matches</caption>
             <thead>
@@ -91,15 +91,30 @@
           <div class="field check"><input id="style-8010" name="style" type="radio" value="80-10-10"><label for="style-8010">80/10/10</label><span class="ratio-note">Muscle 80%, bone 10%, liver 5%, organs 5%</span></div>
           <p class="field-error" id="calc-style-err"></p>
         </fieldset>
-        <div class="field-row">
-          <div class="field">
-            <label for="calc-raw">Raw share of daily calories (%)</label>
-            <input id="calc-raw" name="raw" type="text" inputmode="numeric" autocomplete="off">
-            <p class="field-error" id="calc-raw-err"></p>
+        <fieldset class="field" id="calc-mode">
+          <legend>How to set the kibble</legend>
+          <div class="field check"><input id="mode-percent" name="mode" type="radio" value="percent" checked><label for="mode-percent">By share of daily calories (%)</label></div>
+          <div class="field check"><input id="mode-grams" name="mode" type="radio" value="grams"><label for="mode-grams">By kibble weight (grams)</label></div>
+        </fieldset>
+        <div id="calc-percent-fields">
+          <div class="field-row">
+            <div class="field">
+              <label for="calc-raw">Raw share of daily calories (%)</label>
+              <input id="calc-raw" name="raw" type="text" inputmode="numeric" autocomplete="off">
+              <p class="field-error" id="calc-raw-err"></p>
+            </div>
+            <div class="field">
+              <span class="field-label">Kibble share of daily calories (%)</span>
+              <p class="calc-kibble-pct" id="calc-kibble-pct" aria-live="polite"></p>
+            </div>
           </div>
+        </div>
+        <div id="calc-grams-fields" hidden>
           <div class="field">
-            <span class="field-label">Kibble share of daily calories (%)</span>
-            <p class="calc-kibble-pct" id="calc-kibble-pct" aria-live="polite"></p>
+            <label for="calc-kibble-g">Kibble weight per day (g)</label>
+            <input id="calc-kibble-g" name="kibbleGrams" type="text" inputmode="numeric" autocomplete="off">
+            <p class="field-hint">Uses the calories of the kibble product you choose below. Raw food makes up the rest of the daily calories.</p>
+            <p class="field-error" id="calc-kibble-g-err"></p>
           </div>
         </div>
 
@@ -160,8 +175,8 @@
     <div class="copyright">MixFeeder Calculator. A guide only.</div>
   </div>
 </footer>
-<script src="assets/js/feeding-config.js?v=20261104h"></script>
-<script src="assets/js/calculator-core.js?v=20261104h"></script>
-<script src="assets/js/calculator.js?v=20261104h"></script>
+<script src="assets/js/feeding-config.js?v=20261104i"></script>
+<script src="assets/js/calculator-core.js?v=20261104i"></script>
+<script src="assets/js/calculator.js?v=20261104i"></script>
 </body>
 </html>

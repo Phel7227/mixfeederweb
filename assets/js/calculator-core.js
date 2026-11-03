@@ -62,9 +62,33 @@
     var treatPct = Number(input.treatPct) || 0;
     var treatKcal = roundTo(der * treatPct / 100, 5);
     var foodKcal = der - treatKcal;
-    var kibblePct = 100 - rawPct;
-    var kibbleKcal = roundTo(foodKcal * kibblePct / 100, 5);
-    var rawKcal = foodKcal - kibbleKcal;
+    // Two ways to set the kibble: by share of the food calories (percent), or by kibble weight (grams).
+    // Grams need the kibble product, because its calories per 100g turn the weight into calories.
+    var grams = input.mode === "grams";
+    var kibblePct, kibbleKcal, rawKcal;
+    if (grams) {
+      if (!product) return { status: "needs_product" };
+      kibbleKcal = roundTo(Number(input.kibbleGrams) * product.kcal_per_100g / 100, 5);
+      if (kibbleKcal > foodKcal) {
+        return {
+          status: "over",
+          derKcal: der,
+          treatKcal: treatKcal,
+          foodKcal: foodKcal,
+          kibbleGrams: Number(input.kibbleGrams),
+          kibbleKcal: kibbleKcal,
+          excessKcal: kibbleKcal - foodKcal,
+          maxKibbleGrams: Math.floor(foodKcal * 100 / product.kcal_per_100g),
+          kibbleProduct: product
+        };
+      }
+      rawKcal = foodKcal - kibbleKcal;
+      kibblePct = foodKcal > 0 ? Math.round(kibbleKcal / foodKcal * 100) : 0;
+    } else {
+      kibblePct = 100 - rawPct;
+      kibbleKcal = roundTo(foodKcal * kibblePct / 100, 5);
+      rawKcal = foodKcal - kibbleKcal;
+    }
 
     var result = {
       status: "ok",
@@ -76,7 +100,7 @@
       treatKcal: treatKcal,
       foodKcal: foodKcal,
       kibblePct: kibblePct,
-      rawPct: rawPct,
+      rawPct: 100 - kibblePct,
       kibbleKcal: kibbleKcal,
       rawKcal: rawKcal,
       kibbleGrams: null,
@@ -112,7 +136,7 @@
 
     if (kibbleKcal > 0) {
       if (!product) return { status: "needs_product", result: result };
-      result.kibbleGrams = Math.round(kibbleKcal / product.kcal_per_100g * 100);
+      result.kibbleGrams = grams ? Math.round(Number(input.kibbleGrams)) : Math.round(kibbleKcal / product.kcal_per_100g * 100);
       result.kibbleProduct = product;
     }
 
