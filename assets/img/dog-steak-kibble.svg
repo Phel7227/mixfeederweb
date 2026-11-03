@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Cartoon dog lying on a steak, beside a bowl full of kibble">
+  <!-- backdrop and ground -->
+  <circle cx="200" cy="150" r="150" fill="#fff4b8"/>
+  <ellipse cx="200" cy="268" rx="182" ry="12" fill="#ffe57a"/>
+
+  <!-- steak, with fat marbling -->
+  <path d="M96 196 Q104 150 164 146 Q230 142 252 180 Q266 214 222 232 Q170 248 122 234 Q88 222 96 196 Z" fill="#e0736f"/>
+  <g fill="none" stroke="#f6c3b6" stroke-width="3" stroke-linecap="round">
+    <path d="M124 186 q14 -8 26 2"/>
+    <path d="M168 170 q16 -6 30 4"/>
+    <path d="M198 206 q14 -6 26 2"/>
+    <path d="M140 212 q12 -5 22 2"/>
+  </g>
+
+  <!-- dog lying on the steak -->
+  <ellipse cx="180" cy="170" rx="64" ry="24" fill="#ffd23f"/>
+  <path d="M236 160 Q266 138 254 116" fill="none" stroke="#ffd23f" stroke-width="11" stroke-linecap="round"/>
+  <ellipse cx="108" cy="168" rx="30" ry="24" fill="#ffd23f"/>
+  <ellipse cx="94" cy="178" rx="15" ry="10" fill="#ffd23f"/>
+  <path d="M90 175 q5 4 10 0" fill="none" stroke="#35597a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M104 164 q6 4 12 0" fill="none" stroke="#35597a" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="86" cy="172" rx="5" ry="4" fill="#35597a"/>
+  <path d="M92 146 Q80 138 84 124 Q92 128 100 144 Z" fill="#ffbe0b"/>
+  <path d="M122 152 Q116 134 126 124 Q134 134 132 154 Z" fill="#ffd23f"/>
+  <path d="M124 146 Q122 136 127 130 Q130 138 128 148 Z" fill="#ffbe0b"/>
+  <ellipse cx="116" cy="194" rx="14" ry="7" fill="#ffd23f"/>
+  <ellipse cx="216" cy="192" rx="18" ry="8" fill="#ffd23f"/>
+
+  <!-- dog bowl full of kibble -->
+  <path d="M268 204 H372 Q366 264 320 268 Q274 264 268 204 Z" fill="#35597a"/>
+  <ellipse cx="320" cy="204" rx="52" ry="13" fill="#4a72a0"/>
+  <ellipse cx="320" cy="198" rx="46" ry="11" fill="#c98a4b"/>
+  <g fill="#a86b35">
+    <circle cx="298" cy="194" r="6"/>
+    <circle cx="316" cy="188" r="6"/>
+    <circle cx="336" cy="192" r="6"/>
+    <circle cx="308" cy="202" r="6"/>
+    <circle cx="332" cy="202" r="6"/>
+    <circle cx="346" cy="198" r="5"/>
+  </g>
+  <g fill="#d9a062">
+    <circle cx="304" cy="190" r="2.5"/>
+    <circle cx="326" cy="184" r="2.5"/>
+    <circle cx="340" cy="198" r="2.5"/>
+  </g>
+</svg>
