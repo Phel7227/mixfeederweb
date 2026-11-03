@@ -1,0 +1,5 @@
+# Admin accounts and session data (never commit)
+auth/
+# Kibble product store (runtime data, never commit)
+store/
+__pycache__/
