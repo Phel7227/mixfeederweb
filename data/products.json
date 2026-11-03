@@ -343,6 +343,274 @@
         }
       ],
       "feeding_guide_source": "https://www.lifewisepetfood.com/product/ocean-fish-large-bites (brand site)"
+    },
+    {
+      "id": "ff99d4ddc23443bead58d77dc6a0dad1",
+      "brand": "Lifewise",
+      "name": "Wild Tuna with Lamb and Vegetables (GF) Dog Food",
+      "kcal_per_100g": 412.0,
+      "source": "https://www.lifewisepetfood.com/product/wild-tuna",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 80,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 110,
+          "high": 140
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 180
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 180,
+          "high": 220
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 220,
+          "high": 280
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/wild-tuna (brand site)"
+    },
+    {
+      "id": "f428f32c6a0e4f5bb2b81f8dae722320",
+      "brand": "Lifewise",
+      "name": "Chicken with Turkey and Vegetables (GF) Dog Food",
+      "kcal_per_100g": 402.0,
+      "source": "https://www.lifewisepetfood.com/product/chicken",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 80,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 110,
+          "high": 140
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 180
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 180,
+          "high": 220
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 220,
+          "high": 280
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/chicken (brand site)"
+    },
+    {
+      "id": "bb22bc7de4ab4cf58531d642f1f80578",
+      "brand": "Lifewise",
+      "name": "Biotic Skin & Gut Dog Food",
+      "kcal_per_100g": 392.0,
+      "source": "https://www.lifewisepetfood.com/product/biotic-skin",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 50,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 100,
+          "high": 150
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 200
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 190,
+          "high": 290
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 280,
+          "high": 380
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/biotic-skin (brand site)"
+    },
+    {
+      "id": "a36fae5cf46c4766b8fe9771958dc6b7",
+      "brand": "Lifewise",
+      "name": "Biotic F.A.S. Calm Dog Food",
+      "kcal_per_100g": 390.0,
+      "source": "https://www.lifewisepetfood.com/product/biotic-calm-fear-anxiety-stress",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 50,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 100,
+          "high": 150
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 200
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 190,
+          "high": 290
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 280,
+          "high": 380
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/biotic-calm-fear-anxiety-stress (brand site)"
+    },
+    {
+      "id": "c5aaed4ebadb494398b8c74ea854aae7",
+      "brand": "Lifewise",
+      "name": "Turkey with Lamb and Vegetables (GF) Dog Food",
+      "kcal_per_100g": 419.0,
+      "source": "https://www.lifewisepetfood.com/product/turkey",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 80,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 110,
+          "high": 140
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 180
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 180,
+          "high": 220
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 220,
+          "high": 280
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/turkey (brand site)"
+    },
+    {
+      "id": "44fb6ddefb124410ad5361daa8e1873b",
+      "brand": "Lifewise",
+      "name": "Tone & Trim Lamb Dog Food",
+      "kcal_per_100g": 380.0,
+      "source": "https://www.lifewisepetfood.com/product/lite-lamb",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 80,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 110,
+          "high": 140
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 180
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 180,
+          "high": 220
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 220,
+          "high": 280
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/lite-lamb (brand site)"
+    },
+    {
+      "id": "ddf4ed9c8b0d4ee1bdd717e364c5c78e",
+      "brand": "Lifewise",
+      "name": "Puppy Turkey Stage 1 Mini Starter Dog Food",
+      "kcal_per_100g": 410.0,
+      "source": "https://www.lifewisepetfood.com/product/puppy-turkey-mini-starter",
+      "feeding_guide": [
+        {
+          "min": 2,
+          "max": 5,
+          "low": 40,
+          "high": 100
+        },
+        {
+          "min": 5,
+          "max": 10,
+          "low": 90,
+          "high": 140
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 120,
+          "high": 200
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/puppy-turkey-mini-starter (brand site)"
     }
   ]
 }
