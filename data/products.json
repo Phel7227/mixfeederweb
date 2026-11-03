@@ -611,6 +611,172 @@
         }
       ],
       "feeding_guide_source": "https://www.lifewisepetfood.com/product/puppy-turkey-mini-starter (brand site)"
+    },
+    {
+      "id": "f00a2ae10baf401ab543bc781c73dc52",
+      "brand": "Lifewise",
+      "name": "Puppy Turkey Stage 1 Starter Dog Food",
+      "kcal_per_100g": 410.0,
+      "source": "https://www.lifewisepetfood.com/product/turkey-starter",
+      "feeding_guide": [
+        {
+          "min": 2,
+          "max": 5,
+          "low": 40,
+          "high": 100
+        },
+        {
+          "min": 5,
+          "max": 10,
+          "low": 90,
+          "high": 140
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 120,
+          "high": 200
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/turkey-starter (brand site)"
+    },
+    {
+      "id": "393e64dc9df24e5ea5d997e19366a588",
+      "brand": "Lifewise",
+      "name": "Puppy Lamb and Fish Stage 2 Dog Food",
+      "kcal_per_100g": 408.0,
+      "source": "https://www.lifewisepetfood.com/product/lamb",
+      "feeding_guide": [
+        {
+          "min": 2,
+          "max": 5,
+          "low": 40,
+          "high": 100
+        },
+        {
+          "min": 5,
+          "max": 10,
+          "low": 90,
+          "high": 140
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 120,
+          "high": 200
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 180,
+          "high": 240
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 220,
+          "high": 300
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 280,
+          "high": 400
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/lamb (brand site)"
+    },
+    {
+      "id": "e21725c151df4ea597bfcd9601378b34",
+      "brand": "Lifewise",
+      "name": "Puppy Turkey Stage 3 Small Bites Dog Food",
+      "kcal_per_100g": 410.0,
+      "source": "https://www.lifewisepetfood.com/product/puppy-turkey-stage-3-small-bites",
+      "feeding_guide": [
+        {
+          "min": 2,
+          "max": 5,
+          "low": 40,
+          "high": 100
+        },
+        {
+          "min": 5,
+          "max": 10,
+          "low": 90,
+          "high": 140
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 120,
+          "high": 200
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 180,
+          "high": 240
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 220,
+          "high": 300
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 280,
+          "high": 400
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/puppy-turkey-stage-3-small-bites (brand site)"
+    },
+    {
+      "id": "fb78afbad0f848d6896a4a2f3a180495",
+      "brand": "Lifewise",
+      "name": "Puppy Turkey Stage 3 Large Bites Dog Food",
+      "kcal_per_100g": 410.0,
+      "source": "https://www.lifewisepetfood.com/product/turkey-2",
+      "feeding_guide": [
+        {
+          "min": 2,
+          "max": 5,
+          "low": 40,
+          "high": 100
+        },
+        {
+          "min": 5,
+          "max": 10,
+          "low": 90,
+          "high": 140
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 120,
+          "high": 200
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 180,
+          "high": 240
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 220,
+          "high": 300
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 280,
+          "high": 400
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/turkey-2 (brand site)"
     }
   ]
 }
