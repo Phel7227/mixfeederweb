@@ -41,6 +41,15 @@
     return blend;
   }
 
+  // The feeding-rate band for a weight, or null when the table does not cover it
+  function feedingRateFor(weightKg, config) {
+    var bands = config.feedingRates || [];
+    for (var i = 0; i < bands.length; i++) {
+      if (weightKg >= bands[i].min && weightKg < bands[i].max) return bands[i];
+    }
+    return null;
+  }
+
   function calculate(input, config, product) {
     var weight = Number(input.weightKg);
     var rawPct = Number(input.rawPct);
@@ -109,7 +118,8 @@
       rawKcalPer100g: null,
       rawKcalRange: null,
       recipe: [],
-      styleLabel: style.label
+      styleLabel: style.label,
+      feedingRate: feedingRateFor(weight, config)
     };
 
     if (rawKcal > 0) {
@@ -147,6 +157,7 @@
     RER_FACTOR: RER_FACTOR,
     RER_EXPONENT: RER_EXPONENT,
     BASES: BASES,
+    feedingRateFor: feedingRateFor,
     resting: resting,
     roundTo: roundTo,
     blendedKcalPer100g: blendedKcalPer100g,

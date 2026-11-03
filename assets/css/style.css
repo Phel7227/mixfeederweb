@@ -37,7 +37,7 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 .site-header { background: #f6c25c; color: #3d2213; border-bottom: 4px solid #3d2213; }
 .site-header .container { display: flex; align-items: center; height: 44px; }
 .brand { text-decoration: none; color: #3d2213; font-weight: 700; font-size: 11px; letter-spacing: .3px; }
-.brand-icon { display: inline-block; width: 24px; height: 20px; margin-right: 6px; vertical-align: middle; background: url("../img/dog-silhouette.svg?v=20261104r") center / contain no-repeat; }
+.brand-icon { display: inline-block; width: 24px; height: 20px; margin-right: 6px; vertical-align: middle; background: url("../img/dog-silhouette.svg?v=20261104s") center / contain no-repeat; }
 
 /* Hero */
 .hero { position: relative; background: transparent; border-bottom: 1px solid #f6c25c; }
@@ -71,7 +71,7 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 .enquiry-form { background: #fff; border-radius: 10px; padding: 32px; box-shadow: 0 6px 24px rgba(242, 189, 22, .18); border-top: 6px solid var(--yellow); }
 .calc-form h2, .calc-admin h2 { font-size: 19px; margin: 28px 0 16px; }
 .calc-form h2:first-child { margin-top: 0; }
-.calc-form h2::before, .calc-results h2::before { content: ""; display: inline-block; width: 36px; height: 18px; margin-right: 10px; vertical-align: middle; background: url("../img/bone-cream.png?v=20261104r") center / contain no-repeat; }
+.calc-form h2::before, .calc-results h2::before { content: ""; display: inline-block; width: 36px; height: 18px; margin-right: 10px; vertical-align: middle; background: url("../img/bone-cream.png?v=20261104s") center / contain no-repeat; }
 .calc-form fieldset { border: 0; padding: 0; margin: 0 0 20px; }
 .field { margin-bottom: 20px; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -145,3 +145,8 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 
 /* Kibble entry mode choice */
 #calc-mode legend { margin-bottom: 8px; }
+
+/* Feeding rate guide */
+.feeding-guide { margin: -8px 0 20px; }
+.feeding-guide summary { cursor: pointer; font-weight: 700; color: var(--blue-dark); }
+

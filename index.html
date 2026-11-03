@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MixFeeder Calculator</title>
 <meta name="description" content="Estimate your dog's daily calories and raw or kibble portions. A guide only.">
-<link rel="stylesheet" href="assets/css/style.css?v=20261104r">
+<link rel="stylesheet" href="assets/css/style.css?v=20261104s">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -16,7 +16,7 @@
       <h1>MixFeeder Calculator</h1>
       <p>Work out how to balance your dog's daily calories with a mixed raw and kibble diet, including a raw recipe in grams.</p>
     </div>
-    <img src="assets/img/dog-poodle-steak.png?v=20261104r" alt="Fluffy cream dog asleep with its head on a steak, beside a bowl of kibble" width="420" height="281">
+    <img src="assets/img/dog-poodle-steak.png?v=20261104s" alt="Fluffy cream dog asleep with its head on a steak, beside a bowl of kibble" width="420" height="281">
   </div>
 </section>
 <section class="section calc">
@@ -34,6 +34,19 @@
           <input id="calc-weight" name="weight" type="text" inputmode="decimal" autocomplete="off">
             <p class="field-error" id="calc-weight-err"></p>
         </div>
+        <details class="feeding-guide">
+          <summary>Feeding rate by weight</summary>
+          <table class="shape-table">
+            <thead><tr><th scope="col">Weight</th><th scope="col">Amount a day</th></tr></thead>
+            <tbody>
+              <tr><td>5 to 10 kg</td><td>50 to 110 g</td></tr>
+              <tr><td>10 to 20 kg</td><td>100 to 150 g</td></tr>
+              <tr><td>20 to 30 kg</td><td>140 to 200 g</td></tr>
+              <tr><td>30 to 40 kg</td><td>190 to 290 g</td></tr>
+              <tr><td>40 to 50 kg</td><td>280 to 380 g</td></tr>
+            </tbody>
+          </table>
+        </details>
         <div class="field">
           <label for="calc-factor">Life stage</label>
           <select id="calc-factor" name="factor"></select>
@@ -47,7 +60,7 @@
         <details class="shape-guide">
           <summary>Not sure which shape? Compare body condition scores</summary>
           <p class="field-hint">Body condition score runs from 1 (very thin) to 5 (heavy). A score of 3 is ideal. Run your hand along the ribs with light pressure, then look at your dog from above and from the side.</p>
-          <img class="waist-figure" src="assets/img/body-scale.png?v=20261104r" alt="Five dogs from very thin to heavy, each shown from above and from the side. The middle dog is marked 5.">
+          <img class="waist-figure" src="assets/img/body-scale.png?v=20261104s" alt="Five dogs from very thin to heavy, each shown from above and from the side. The middle dog is marked 5.">
           <table class="shape-table">
             <caption class="sr-only">Body condition score, how the ribs feel, and the body shape option it matches</caption>
             <thead>
@@ -153,8 +166,8 @@
   </div>
 </section>
 </main>
-<script src="assets/js/feeding-config.js?v=20261104r"></script>
-<script src="assets/js/calculator-core.js?v=20261104r"></script>
-<script src="assets/js/calculator.js?v=20261104r"></script>
+<script src="assets/js/feeding-config.js?v=20261104s"></script>
+<script src="assets/js/calculator-core.js?v=20261104s"></script>
+<script src="assets/js/calculator.js?v=20261104s"></script>
 </body>
 </html>

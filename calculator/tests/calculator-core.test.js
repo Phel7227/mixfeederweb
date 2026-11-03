@@ -186,6 +186,15 @@ test("a kibble share with no product asks for a product", () => {
   assert.equal(core.calculate(input({ rawPct: 50 }), CONFIRMED, null).status, "needs_product");
 });
 
+test("feeding rate band: lower bound inclusive, upper bound exclusive, none outside the table", () => {
+  const cfg = { feedingRates: [{ min: 5, max: 10, low: 50, high: 110 }, { min: 10, max: 20, low: 100, high: 150 }] };
+  assert.equal(core.feedingRateFor(4.9, cfg), null);
+  assert.equal(core.feedingRateFor(5, cfg).low, 50);
+  assert.equal(core.feedingRateFor(9.9, cfg).low, 50);
+  assert.equal(core.feedingRateFor(10, cfg).low, 100);
+  assert.equal(core.feedingRateFor(20, cfg), null);
+});
+
 test("every style split totals 100%", () => {
   Object.values(CONFIRMED.styles).forEach((style) => {
     const total = Object.values(style.split).reduce((a, b) => a + b, 0);

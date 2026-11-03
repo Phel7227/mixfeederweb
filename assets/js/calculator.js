@@ -279,6 +279,16 @@
     }
     el.results.appendChild(summary);
 
+    if (r.feedingRate) {
+      summary.appendChild(row("Feeding rate for this weight", r.feedingRate.low + " to " + r.feedingRate.high + " g a day"));
+    }
+    if (r.feedingRate && r.kibbleGrams !== null && r.kibbleGrams > r.feedingRate.high) {
+      var rateNote = document.createElement("p");
+      rateNote.className = "field-error";
+      setText(rateNote, "The kibble amount (" + r.kibbleGrams + " g) is above the feeding rate for this weight (up to " +
+        r.feedingRate.high + " g a day).");
+      el.results.appendChild(rateNote);
+    }
     if (r.kibbleKcal > 0) {
       var kibble = document.createElement("section");
       var kh = document.createElement("h3");

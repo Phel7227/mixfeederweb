@@ -42,6 +42,14 @@ window.FEEDING_CONFIG = {
     organs: { label: "Other secreting organs", kcalPer100g: { low: 100, high: 120 } },
     veg: { label: "Vegetables and fruit", kcalPer100g: { low: 20, high: 30 } }
   },
+  // Feeding rate: daily food in grams for each weight band (lower bound inclusive, upper bound exclusive)
+  feedingRates: [
+    { min: 5, max: 10, low: 50, high: 110 },
+    { min: 10, max: 20, low: 100, high: 150 },
+    { min: 20, max: 30, low: 140, high: 200 },
+    { min: 30, max: 40, low: 190, high: 290 },
+    { min: 40, max: 50, low: 280, high: 380 }
+  ],
   styles: {
     barf: {
       label: "BARF",
