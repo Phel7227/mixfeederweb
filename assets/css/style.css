@@ -127,3 +127,18 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
   .calc-layout { grid-template-columns: minmax(0, 1fr); }
   .calc-side { position: static; }
 }
+
+/* Body shape guide (body condition score table) */
+.shape-guide { margin: -8px 0 20px; }
+.shape-guide summary { cursor: pointer; font-weight: 700; color: var(--blue-dark); }
+.shape-guide .field-hint { margin: 8px 0 12px; }
+.shape-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.shape-table th, .shape-table td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #f3e7a8; vertical-align: middle; }
+.shape-table th { color: var(--blue-dark); font-weight: 700; }
+.shape-table td:first-child { font-weight: 700; width: 56px; }
+.shape-table td:last-child { width: 80px; }
+.shape-img { width: 56px; height: auto; }
+.shape-skinny { transform: scaleX(0.8); }
+.shape-ideal { transform: scaleX(1); }
+.shape-fat { transform: scaleX(1.25); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
