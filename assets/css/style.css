@@ -1,14 +1,15 @@
 /* MixFeeder Calculator: pastel yellow and pastel blue theme */
 :root {
-  --blue: #a9d3f5;
+  --blue: #a9d4f2;
   --blue-dark: #2c5a86;
-  --blue-light: #e6f2fc;
-  --yellow: #fff0a6;
-  --yellow-dark: #ffe473;
-  --yellow-light: #fffbe6;
+  --blue-light: #e8f4fc;
+  --yellow: #ffd84d;
+  --yellow-dark: #f2bd16;
+  --yellow-light: #fff3b8;
+  --yellow-pale: #fffbe6;
   --ink: #22303f;
   --muted: #5b6878;
-  --bg: #fffdf7;
+  --bg: #fffbe6;
   --error: #a3261e;
   --max: 1080px;
 }
@@ -31,21 +32,16 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; }
 .skip-link:focus { left: 16px; top: 16px; background: #fff; padding: 8px 12px; z-index: 100; }
 
 /* Header */
-.site-header { background: var(--blue); color: var(--blue-dark); border-bottom: 6px solid var(--yellow); }
+.site-header { background: var(--yellow); color: var(--ink); border-bottom: 6px solid var(--blue); }
 .site-header .container { display: flex; align-items: center; height: 68px; }
-.brand { text-decoration: none; color: var(--blue-dark); font-weight: 700; font-size: 20px; letter-spacing: .5px; }
+.brand { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 20px; letter-spacing: .5px; }
 
 /* Hero */
-.hero { position: relative; overflow: hidden; background: var(--yellow-light); border-bottom: 1px solid #f3e7a8; }
-/* Faded drawing behind the text */
-.hero::before {
-  content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 70%;
-  background: url("../img/dog-and-food.svg") center right / contain no-repeat;
-  opacity: .3; pointer-events: none;
-}
+.hero { position: relative; background: var(--yellow); border-bottom: 1px solid var(--yellow-dark); }
 .hero-inner { position: relative; padding-top: 48px; padding-bottom: 48px; }
 .hero h1 { margin: 0 0 12px; font-size: clamp(32px, 5vw, 48px); }
 .hero p { margin: 0; max-width: 480px; font-size: 18px; color: var(--ink); }
+.hero h1 { color: var(--ink); }
 
 /* Sections */
 .section { padding: 40px 0 56px; }
@@ -60,16 +56,16 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; }
 .btn:focus-visible, .product-option:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 3px solid var(--blue); outline-offset: 2px;
 }
-.btn-outline { background: #fff; color: var(--blue-dark); border: 2px solid var(--blue); padding: 10px 24px; margin: 0 6px 10px 0; }
-.btn-outline:hover { background: var(--blue-light); }
+.btn-outline { background: #fff; color: var(--ink); border: 2px solid var(--yellow-dark); padding: 10px 24px; margin: 0 6px 10px 0; }
+.btn-outline:hover { background: var(--yellow-pale); }
 
 /* Disclaimer */
-.calc-disclaimer { background: var(--yellow-light); border-left: 6px solid var(--yellow); border-radius: 6px; padding: 20px 24px; margin-bottom: 24px; }
+.calc-disclaimer { background: var(--yellow-light); border-left: 6px solid var(--blue); border-radius: 6px; padding: 20px 24px; margin-bottom: 24px; }
 .calc-disclaimer p { margin: 0 0 12px; }
 .calc-disclaimer .field { margin-bottom: 0; }
 
 /* Form */
-.enquiry-form { background: #fff; border-radius: 10px; padding: 32px; box-shadow: 0 6px 24px rgba(44, 90, 134, .10); border-top: 6px solid var(--blue); }
+.enquiry-form { background: #fff; border-radius: 10px; padding: 32px; box-shadow: 0 6px 24px rgba(242, 189, 22, .18); border-top: 6px solid var(--yellow); }
 .calc-form h2, .calc-admin h2 { font-size: 22px; margin: 28px 0 16px; }
 .calc-form h2:first-child { margin-top: 0; }
 .calc-form fieldset { border: 0; padding: 0; margin: 0 0 20px; }
@@ -92,11 +88,11 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; }
 .hp { position: absolute; left: -9999px; }
 .calc-kibble-pct { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin: 8px 0 0; }
 .product-results { list-style: none; padding: 0; margin: 8px 0 0; }
-.product-option { width: 100%; text-align: left; background: var(--blue-light); border: 1px solid #c4d8f0; border-radius: 6px; padding: 10px 12px; margin-bottom: 6px; font: inherit; cursor: pointer; color: var(--ink); }
-.product-option:hover { background: #d3e5fa; }
+.product-option { width: 100%; text-align: left; background: var(--yellow-pale); border: 1px solid #c4d8f0; border-radius: 6px; padding: 10px 12px; margin-bottom: 6px; font: inherit; cursor: pointer; color: var(--ink); }
+.product-option:hover { background: var(--yellow-light); }
 
 /* Results */
-.calc-results { background: #fff; border-radius: 10px; padding: 32px; box-shadow: 0 6px 24px rgba(44, 90, 134, .10); margin-top: 24px; border-top: 6px solid var(--yellow); }
+.calc-results { background: #fff; border-radius: 10px; padding: 32px; box-shadow: 0 6px 24px rgba(242, 189, 22, .18); margin-top: 24px; border-top: 6px solid var(--blue); }
 .calc-results h2 { margin-top: 0; }
 .calc-results h3 { margin: 20px 0 8px; color: var(--blue-dark); }
 .calc-results ul { padding-left: 0; list-style: none; margin: 0 0 8px; }
@@ -107,7 +103,7 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; }
 .calc-admin .btn { margin-right: 8px; }
 
 /* Footer */
-.site-footer { background: var(--blue); color: var(--blue-dark); padding: 28px 0; margin-top: 24px; }
+.site-footer { background: var(--yellow); color: var(--ink); padding: 28px 0; margin-top: 24px; border-top: 6px solid var(--blue); }
 .copyright { font-size: 14px; }
 
 @media (max-width: 640px) {
