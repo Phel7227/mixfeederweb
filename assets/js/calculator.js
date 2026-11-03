@@ -12,6 +12,7 @@
     weight: document.getElementById("calc-weight"),
     factor: document.getElementById("calc-factor"),
     activity: document.getElementById("calc-activity"),
+    activityGuide: document.getElementById("calc-activity-guide"),
     bodyShape: document.getElementById("calc-shape"),
     rawPct: document.getElementById("calc-raw"),
     percentFields: document.getElementById("calc-percent-fields"),
@@ -73,6 +74,11 @@
     el.activity.appendChild(option);
   });
   el.activity.value = "normal";
+  function showActivityGuide() {
+    setText(el.activityGuide, config.activity.options[el.activity.value].guide);
+  }
+  el.activity.addEventListener("change", showActivityGuide);
+  showActivityGuide();
 
   var shapeKeys = Object.keys(config.bodyShape.options);
   if (config.bodyShape.confirmed) {
