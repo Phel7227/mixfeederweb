@@ -58,9 +58,13 @@
     var factor = config.factors.table[input.factorKey] * shape.factor;
 
     var der = roundTo(resting(weight) * factor, 5);
+    // Treats come out of the daily target first. The kibble and raw split applies to what is left.
+    var treatPct = Number(input.treatPct) || 0;
+    var treatKcal = roundTo(der * treatPct / 100, 5);
+    var foodKcal = der - treatKcal;
     var kibblePct = 100 - rawPct;
-    var kibbleKcal = roundTo(der * kibblePct / 100, 5);
-    var rawKcal = der - kibbleKcal;
+    var kibbleKcal = roundTo(foodKcal * kibblePct / 100, 5);
+    var rawKcal = foodKcal - kibbleKcal;
 
     var result = {
       status: "ok",
@@ -68,6 +72,9 @@
       derKcal: der,
       bodyShapeLabel: shape.label,
       basis: basis,
+      treatPct: treatPct,
+      treatKcal: treatKcal,
+      foodKcal: foodKcal,
       kibblePct: kibblePct,
       rawPct: rawPct,
       kibbleKcal: kibbleKcal,

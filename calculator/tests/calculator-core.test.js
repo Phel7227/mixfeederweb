@@ -99,6 +99,20 @@ test("average is the midpoint of the blended low and high calorie values", () =>
   assert.ok(blend.low < blend.average && blend.average < blend.high);
 });
 
+test("treats come out of the daily target, and food plus treats equals the target", () => {
+  const r = core.calculate(input({ rawPct: 30, treatPct: 10 }), CONFIRMED, PRODUCT);
+  assert.equal(r.status, "ok");
+  assert.equal(r.treatKcal, core.roundTo(r.derKcal * 0.1, 5));
+  assert.equal(r.foodKcal, r.derKcal - r.treatKcal);
+  assert.equal(r.kibbleKcal + r.rawKcal + r.treatKcal, r.derKcal);
+});
+
+test("with no treats the food is the whole target", () => {
+  const r = core.calculate(input({ rawPct: 30, treatPct: 0 }), CONFIRMED, PRODUCT);
+  assert.equal(r.treatKcal, 0);
+  assert.equal(r.foodKcal, r.derKcal);
+});
+
 test("kibble and raw kcal add up to the daily target", () => {
   const r = core.calculate(input({ rawPct: 30 }), CONFIRMED, PRODUCT);
   assert.equal(r.status, "ok");

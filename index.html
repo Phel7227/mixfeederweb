@@ -84,7 +84,14 @@
           <p class="field-hint">Ingredient calories vary. Average is the default. Pick lower or higher to see the amount for that end of the range.</p>
         </div>
 
-        <h2>Kibble product</h2>
+        <div class="field">
+        <label for="calc-treat">Treats (% of daily calories)</label>
+        <input id="calc-treat" name="treat" type="text" inputmode="numeric" autocomplete="off" value="0">
+        <p class="field-hint">From 0 to 30. Treats should not exceed 10% of daily calories.</p>
+        <p class="field-error" id="calc-treat-err"></p>
+      </div>
+
+      <h2>Kibble product</h2>
         <div class="field">
           <label for="calc-product-search">Brand and product name</label>
           <input id="calc-product-search" type="text" autocomplete="off" placeholder="For example: brand name product">

@@ -14,6 +14,7 @@
     bodyShape: document.getElementById("calc-shape"),
     basis: document.getElementById("calc-basis"),
     rawPct: document.getElementById("calc-raw"),
+    treat: document.getElementById("calc-treat"),
     kibblePct: document.getElementById("calc-kibble-pct"),
     styleInputs: form.querySelectorAll('input[name="style"]'),
     search: document.getElementById("calc-product-search"),
@@ -223,12 +224,15 @@
   function validate() {
     var weight = el.weight.value.trim();
     var raw = el.rawPct.value.trim();
+    var treat = el.treat.value.trim();
     var ok = true;
     var w = Number(weight);
     ok = fieldError("calc-weight", weight === "" || isNaN(w) || w < 0.5 || w > 90
       ? "Enter the weight in kg (0.5 to 90)." : "") && ok;
     ok = fieldError("calc-raw", raw === "" || !/^\d+$/.test(raw) || Number(raw) > 100
       ? "Enter the raw share as a whole number from 0 to 100." : "") && ok;
+    ok = fieldError("calc-treat", treat === "" || !/^\d+$/.test(treat) || Number(treat) > 30
+      ? "Enter treats as a whole number from 0 to 30." : "") && ok;
     ok = fieldError("calc-style", selectedStyle() ? "" : "Choose a feeding style.") && ok;
     ok = fieldError("calc-shape", el.bodyShape.value ? "" : "Choose the body shape.") && ok;
     return ok;
@@ -247,6 +251,7 @@
     var outcome = core.calculate({
       weightKg: Number(el.weight.value),
       rawPct: Number(el.rawPct.value),
+      treatPct: Number(el.treat.value),
       style: selectedStyle(),
       factorKey: el.factor.value,
       bodyShape: el.bodyShape.value,
@@ -286,6 +291,15 @@
 
     var summary = document.createElement("ul");
     summary.appendChild(row("Daily energy target", r.derKcal + " kcal"));
+    if (r.treatPct > 0) {
+      summary.appendChild(row("Treats", r.treatKcal + " kcal (" + r.treatPct + "% of daily calories)"));
+      if (r.treatPct > 10) {
+        var treatNote = document.createElement("p");
+        treatNote.className = "field-error";
+        setText(treatNote, "Treats are above 10% of daily calories. Treats should not exceed 10%.");
+        summary.appendChild(treatNote);
+      }
+    }
     el.results.appendChild(summary);
 
     if (r.kibbleKcal > 0) {
