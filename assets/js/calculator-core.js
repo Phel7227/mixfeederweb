@@ -50,6 +50,15 @@
     return null;
   }
 
+  // The product's own feeding guide band for a weight (from the product list), or null
+  function productGuideFor(product, weightKg) {
+    var bands = (product && product.feeding_guide) || [];
+    for (var i = 0; i < bands.length; i++) {
+      if (weightKg >= bands[i].min && weightKg < bands[i].max) return bands[i];
+    }
+    return null;
+  }
+
   function calculate(input, config, product) {
     var weight = Number(input.weightKg);
     var rawPct = Number(input.rawPct);
@@ -160,6 +169,7 @@
     RER_EXPONENT: RER_EXPONENT,
     BASES: BASES,
     feedingRateFor: feedingRateFor,
+    productGuideFor: productGuideFor,
     resting: resting,
     roundTo: roundTo,
     blendedKcalPer100g: blendedKcalPer100g,

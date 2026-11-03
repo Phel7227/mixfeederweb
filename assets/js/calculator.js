@@ -295,6 +295,16 @@
     }
     el.results.appendChild(summary);
 
+    if (r.kibbleKcal > 0 && r.kibbleProduct) {
+      var guide = core.productGuideFor(r.kibbleProduct, Number(el.weight.value));
+      var guideNote = document.createElement("p");
+      guideNote.className = "field-hint";
+      setText(guideNote, guide
+        ? "Feeding guide for " + r.kibbleProduct.brand + " " + r.kibbleProduct.name + ": " +
+          guide.low + " to " + guide.high + " g a day for " + guide.min + " to " + guide.max + " kg."
+        : "No feeding guide saved for " + r.kibbleProduct.brand + " " + r.kibbleProduct.name + " at this weight.");
+      el.results.appendChild(guideNote);
+    }
     if (r.kibbleKcal > 0) {
       var kibble = document.createElement("section");
       var kh = document.createElement("h3");
