@@ -62,7 +62,39 @@
       "name": "Biotic Low Fat Turkey, Oats & Vegetables Dry Dog Food 13kg",
       "kcal_per_100g": 343.0,
       "source": "https://www.woolworths.com.au/shop/productdetails/1114258679",
-      "feeding_guide": []
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 60,
+          "high": 120
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 90,
+          "high": 160
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 240
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 200,
+          "high": 320
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 280,
+          "high": 400
+        }
+      ],
+      "feeding_guide_source": "Kmart / Bunnings listing, Biotic Low Fat Turkey (retailer chart, not the brand site)"
     },
     {
       "id": "4277d9ca82744fabae28f701db0dcc4e",
@@ -158,7 +190,39 @@
       "name": "Biotic Joint Lamb, Rice, Oats & Vegetables Dry Dog Food 13kg",
       "kcal_per_100g": 395.0,
       "source": "https://www.woolworths.com.au/shop/productdetails/1114269615",
-      "feeding_guide": []
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 50,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 100,
+          "high": 150
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 200
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 190,
+          "high": 290
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 280,
+          "high": 380
+        }
+      ],
+      "feeding_guide_source": "Bunnings listing, Biotic Joint Lamb 2.5kg (retailer chart, not the brand site)"
     }
   ]
 }
