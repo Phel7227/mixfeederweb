@@ -295,9 +295,6 @@
     }
     el.results.appendChild(summary);
 
-    if (r.feedingRate) {
-      summary.appendChild(row("Feeding rate for this weight", r.feedingRate.low + " to " + r.feedingRate.high + " g a day"));
-    }
     if (r.feedingRate && r.kibbleGrams !== null && r.kibbleGrams > r.feedingRate.high) {
       var rateNote = document.createElement("p");
       rateNote.className = "field-error";
