@@ -11,6 +11,7 @@
     accept: document.getElementById("calc-accept"),
     weight: document.getElementById("calc-weight"),
     factor: document.getElementById("calc-factor"),
+    activity: document.getElementById("calc-activity"),
     bodyShape: document.getElementById("calc-shape"),
     rawPct: document.getElementById("calc-raw"),
     percentFields: document.getElementById("calc-percent-fields"),
@@ -65,6 +66,14 @@
   }
 
   // Body shape: fat reduces the target, skinny increases it. Empty until the owner confirms the amounts.
+  Object.keys(config.activity.options).forEach(function (key) {
+    var option = document.createElement("option");
+    option.value = key;
+    option.textContent = config.activity.options[key].label;
+    el.activity.appendChild(option);
+  });
+  el.activity.value = "normal";
+
   var shapeKeys = Object.keys(config.bodyShape.options);
   if (config.bodyShape.confirmed) {
     shapeKeys.forEach(function (key) {
@@ -216,6 +225,7 @@
       treatPct: Number(el.treat.value),
       style: selectedStyle(),
       factorKey: el.factor.value,
+      activity: el.activity.value,
       bodyShape: el.bodyShape.value
     }, config, selectedProduct);
 

@@ -6,6 +6,13 @@ const core = require("../../assets/js/calculator-core.js");
 // Test-only values. Not the owner's confirmed factors, body shape amounts or ingredient ranges.
 const CONFIRMED = {
   factors: { confirmed: true, table: { adult: 1.6 } },
+  activity: {
+    options: {
+      low: { label: "Low", factor: 0.6 },
+      normal: { label: "Normal", factor: 1.0 },
+      high: { label: "High", factor: 1.25 }
+    }
+  },
   bodyShape: {
     confirmed: true,
     options: {
@@ -111,6 +118,15 @@ test("with no treats the food is the whole target", () => {
   const r = core.calculate(input({ rawPct: 30, treatPct: 0 }), CONFIRMED, PRODUCT);
   assert.equal(r.treatKcal, 0);
   assert.equal(r.foodKcal, r.derKcal);
+});
+
+test("activity level multiplies the target: low lowers it, normal leaves it, high raises it", () => {
+  const normal = core.calculate(input({ rawPct: 0, activity: "normal" }), CONFIRMED, PRODUCT);
+  const low = core.calculate(input({ rawPct: 0, activity: "low" }), CONFIRMED, PRODUCT);
+  const high = core.calculate(input({ rawPct: 0, activity: "high" }), CONFIRMED, PRODUCT);
+  assert.ok(low.derKcal < normal.derKcal);
+  assert.ok(high.derKcal > normal.derKcal);
+  assert.equal(core.calculate(input({ rawPct: 0 }), CONFIRMED, PRODUCT).derKcal, normal.derKcal);
 });
 
 test("grams mode: kibble calories come from the weight and the product, and raw takes the rest", () => {

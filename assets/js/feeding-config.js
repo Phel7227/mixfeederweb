@@ -42,6 +42,16 @@ window.FEEDING_CONFIG = {
     organs: { label: "Other secreting organs", kcalPer100g: { low: 100, high: 120 } },
     veg: { label: "Vegetables and fruit", kcalPer100g: { low: 20, high: 30 } }
   },
+  // Activity level: multiplier on top of the life-stage factor. Normal leaves the target as it is.
+  // PROPOSED values, not yet confirmed by the owner.
+  activity: {
+    label: "Activity level",
+    options: {
+      low: { label: "Low", factor: 0.6 },
+      normal: { label: "Normal", factor: 1.0 },
+      high: { label: "High", factor: 1.25 }
+    }
+  },
   // Feeding rate: daily food in grams for each weight band (lower bound inclusive, upper bound exclusive)
   feedingRates: [
     { min: 5, max: 10, low: 50, high: 110 },

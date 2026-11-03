@@ -64,7 +64,9 @@
     if (!config.bodyShape.confirmed || !shape || shape.factor === null || shape.factor === undefined) {
       return { status: "pending", missing: "bodyShape" };
     }
-    var factor = config.factors.table[input.factorKey] * shape.factor;
+    var activity = config.activity.options[input.activity || "normal"];
+    if (!activity) return { status: "error", error: "Choose an activity level." };
+    var factor = config.factors.table[input.factorKey] * shape.factor * activity.factor;
 
     var der = roundTo(resting(weight) * factor, 5);
     // Treats come out of the daily target first. The kibble and raw split applies to what is left.
