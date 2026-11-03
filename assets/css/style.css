@@ -33,10 +33,10 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 .skip-link:focus { left: 16px; top: 16px; background: #fff; padding: 8px 12px; z-index: 100; }
 
 /* Header */
-.site-header { background: var(--yellow); color: var(--ink); border-bottom: 6px solid var(--blue); }
-.site-header .container { display: flex; align-items: center; height: 68px; }
-.brand { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 20px; letter-spacing: .5px; }
-.brand-icon { display: inline-block; width: 46px; height: 40px; margin-right: 10px; vertical-align: middle; background: url("../img/dog-silhouette.svg") center / contain no-repeat; }
+.site-header { background: var(--yellow); color: var(--ink); border-bottom: 4px solid var(--blue); }
+.site-header .container { display: flex; align-items: center; height: 52px; }
+.brand { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 16px; letter-spacing: .3px; }
+.brand-icon { display: inline-block; width: 30px; height: 26px; margin-right: 8px; vertical-align: middle; background: url("../img/dog-silhouette.svg") center / contain no-repeat; }
 
 /* Hero */
 .hero { position: relative; background: var(--yellow); border-bottom: 1px solid var(--yellow-dark); }
