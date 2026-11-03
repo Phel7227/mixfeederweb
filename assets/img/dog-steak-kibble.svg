@@ -3,28 +3,30 @@
   <circle cx="200" cy="150" r="150" fill="#fff4b8"/>
   <ellipse cx="200" cy="268" rx="182" ry="12" fill="#ffe57a"/>
 
-  <!-- steak, with fat marbling -->
-  <path d="M96 196 Q104 150 164 146 Q230 142 252 180 Q266 214 222 232 Q170 248 122 234 Q88 222 96 196 Z" fill="#e0736f"/>
-  <g fill="none" stroke="#f6c3b6" stroke-width="3" stroke-linecap="round">
-    <path d="M124 186 q14 -8 26 2"/>
-    <path d="M168 170 q16 -6 30 4"/>
-    <path d="M198 206 q14 -6 26 2"/>
-    <path d="M140 212 q12 -5 22 2"/>
+  <!-- steak: cream fat rim, cooked centre, grill marks -->
+  <path d="M84 200 Q86 146 150 138 Q226 132 258 176 Q272 212 228 238 Q170 256 118 240 Q82 226 84 200 Z" fill="#f2d2c4"/>
+  <path d="M96 200 Q100 156 154 150 Q222 146 248 180 Q260 210 224 228 Q170 244 126 230 Q96 220 96 200 Z" fill="#c4574f"/>
+  <g stroke="#7a2f2d" stroke-width="5" stroke-linecap="round" opacity="0.7">
+    <path d="M124 206 L146 190"/>
+    <path d="M150 214 L172 198"/>
+    <path d="M178 218 L200 202"/>
+    <path d="M204 212 L226 196"/>
   </g>
 
-  <!-- dog lying on the steak -->
-  <ellipse cx="180" cy="170" rx="64" ry="24" fill="#ffd23f"/>
-  <path d="M236 160 Q266 138 254 116" fill="none" stroke="#ffd23f" stroke-width="11" stroke-linecap="round"/>
-  <ellipse cx="108" cy="168" rx="30" ry="24" fill="#ffd23f"/>
-  <ellipse cx="94" cy="178" rx="15" ry="10" fill="#ffd23f"/>
-  <path d="M90 175 q5 4 10 0" fill="none" stroke="#35597a" stroke-width="3" stroke-linecap="round"/>
-  <path d="M104 164 q6 4 12 0" fill="none" stroke="#35597a" stroke-width="3" stroke-linecap="round"/>
-  <ellipse cx="86" cy="172" rx="5" ry="4" fill="#35597a"/>
-  <path d="M92 146 Q80 138 84 124 Q92 128 100 144 Z" fill="#ffbe0b"/>
-  <path d="M122 152 Q116 134 126 124 Q134 134 132 154 Z" fill="#ffd23f"/>
-  <path d="M124 146 Q122 136 127 130 Q130 138 128 148 Z" fill="#ffbe0b"/>
-  <ellipse cx="116" cy="194" rx="14" ry="7" fill="#ffd23f"/>
-  <ellipse cx="216" cy="192" rx="18" ry="8" fill="#ffd23f"/>
+  <!-- dog lying down on the steak, head raised, legs visible -->
+  <ellipse cx="184" cy="170" rx="72" ry="26" fill="#ffd23f"/>
+  <path d="M252 160 Q280 136 268 110" fill="none" stroke="#ffd23f" stroke-width="12" stroke-linecap="round"/>
+  <ellipse cx="236" cy="186" rx="16" ry="10" fill="#ffd23f"/>
+  <rect x="122" y="176" width="14" height="24" rx="7" fill="#ffbe0b"/>
+  <rect x="140" y="178" width="14" height="22" rx="7" fill="#ffbe0b"/>
+  <rect x="216" y="184" width="10" height="12" rx="5" fill="#ffbe0b"/>
+  <circle cx="110" cy="150" r="28" fill="#ffd23f"/>
+  <ellipse cx="88" cy="160" rx="18" ry="13" fill="#ffd23f"/>
+  <path d="M96 128 Q84 118 88 102 Q98 110 108 128 Z" fill="#ffbe0b"/>
+  <path d="M118 124 Q128 114 124 100 Q114 108 110 124 Z" fill="#ffbe0b"/>
+  <ellipse cx="82" cy="160" rx="6" ry="5" fill="#35597a"/>
+  <path d="M96 154 q6 4 12 0" fill="none" stroke="#35597a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M116 150 q6 4 12 0" fill="none" stroke="#35597a" stroke-width="3" stroke-linecap="round"/>
 
   <!-- dog bowl full of kibble -->
   <path d="M268 204 H372 Q366 264 320 268 Q274 264 268 204 Z" fill="#35597a"/>
