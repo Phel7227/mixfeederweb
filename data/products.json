@@ -1,0 +1,144 @@
+{
+  "products": [
+    {
+      "id": "366f1716f1384c76ac760844379bc8ff",
+      "brand": "Zignature",
+      "name": "Limited Ingredient Salmon Dry Dog Food",
+      "kcal_per_100g": 357.3,
+      "source": "https://www.mudbay.com/dog/dog-food/dry/zignature-limited-ingredient-dry-dog-food-salmon/2790.html"
+    },
+    {
+      "id": "65bc05859ad740b1b0a789ace23a65b9",
+      "brand": "Zignature",
+      "name": "Limited Ingredient Catfish Dry Dog Food",
+      "kcal_per_100g": 346.9,
+      "source": "https://www.mudbay.com/dog/dog-food/dry/zignature-limited-ingredient-dry-dog-food-catfish/2784.html"
+    },
+    {
+      "id": "350e5fe618b34167880082afa4cac253",
+      "brand": "Zignature",
+      "name": "Limited Ingredient Turkey Dry Dog Food",
+      "kcal_per_100g": 365.9,
+      "source": "https://www.mudbay.com/dog/dog-food/dry/zignature-limited-ingredient-dry-dog-food-turkey/2791.html"
+    },
+    {
+      "id": "3c2a5db58b27495394ccf834f68d21e4",
+      "brand": "Zignature",
+      "name": "Select Cuts Trout & Salmon Dry Dog Food",
+      "kcal_per_100g": 367.2,
+      "source": "https://www.mudbay.com/dog/dog-food/dry/zignature-select-cuts-dry-dog-food-trout-%26-salmon/3173.html"
+    },
+    {
+      "id": "e0a2623fe9b24eb88a15ce5ac5d7e2bb",
+      "brand": "Zignature",
+      "name": "Select Cuts Lamb Dry Dog Food",
+      "kcal_per_100g": 371.0,
+      "source": "https://www.mudbay.com/dog/dog-food/dry/zignature-select-cuts-dry-dog-food-lamb/3174.html"
+    },
+    {
+      "id": "762e156cfe734623abf5087bb24929e1",
+      "brand": "Holistic Select",
+      "name": "Natural Adult Health Anchovy, Sardine & Salmon Meal Dry Dog Food",
+      "kcal_per_100g": 359.9,
+      "source": "https://www.1800petmeds.com/dog/food/product/holistic-select-natural-adult-health-anchovy-sardine/60323.html"
+    },
+    {
+      "id": "331b827dec8e4f4c9e7900180cceb7a9",
+      "brand": "Lifewise",
+      "name": "Biotic Skin Fish, Rice, Oats & Vegetables Dry Dog Food 13kg",
+      "kcal_per_100g": 394.0,
+      "source": "https://www.woolworths.com.au/shop/productdetails/1114266719"
+    },
+    {
+      "id": "2c5f828df21c432fa8ed51c4b815dce6",
+      "brand": "Lifewise",
+      "name": "Biotic Low Fat Turkey, Oats & Vegetables Dry Dog Food 13kg",
+      "kcal_per_100g": 343.0,
+      "source": "https://www.woolworths.com.au/shop/productdetails/1114258679"
+    },
+    {
+      "id": "4277d9ca82744fabae28f701db0dcc4e",
+      "brand": "Royal Canin",
+      "name": "Medium Adult 25 Dry Dog Food 15kg",
+      "kcal_per_100g": 363.3,
+      "source": "https://www.thevetshed.com.au/buy/royal-canin-25-medium-adult-dog-15kg-red-bag/RCCAM2515"
+    },
+    {
+      "id": "1126811dbd98407385e85625d3297fd8",
+      "brand": "Black Hawk",
+      "name": "Healthy Benefits Weight Management Adult Dog Food 10kg",
+      "kcal_per_100g": 326.0,
+      "source": "https://www.thevetshed.com.au/buy/blackhawk-dog-healthy-benefits-weight-management-1/BH457"
+    },
+    {
+      "id": "38292c5cdbc24342a8ee7fe0c503b4d2",
+      "brand": "K9 Natural",
+      "name": "Freeze-Dried Beef Feast Dog Food",
+      "kcal_per_100g": 490.5,
+      "source": "https://mudbay.com/dog/dog-food/freeze-dried/k9-natural-freeze-dried-dog-food-beef/689.html"
+    },
+    {
+      "id": "9314185e52794d39a8089d3c33c8e97f",
+      "brand": "ZIWI Peak",
+      "name": "Air-Dried Beef Dog Food",
+      "kcal_per_100g": 490.0,
+      "source": "https://us.ziwipets.com/products/air-dried-beef-dog-food"
+    },
+    {
+      "id": "0ea69f5792534977820bbfcd27a04051",
+      "brand": "ZIWI Peak",
+      "name": "Air-Dried Chicken Dog Food",
+      "kcal_per_100g": 500.0,
+      "source": "https://ziwipets.com/products/air-dried-chicken-dog-food"
+    },
+    {
+      "id": "83d0e6adf8fe48a29e2812890f0ce242",
+      "brand": "Taste of the Wild",
+      "name": "Wetlands Canine Recipe Roasted Fowl Dry Dog Food",
+      "kcal_per_100g": 375.0,
+      "source": "https://www.1800petmeds.com/dog/food/product/taste-of-wild-wetlands-canine-recipe-roasted-fowl-dry/60210.html"
+    },
+    {
+      "id": "400293c82bd24dca86da263c7e029973",
+      "brand": "Taste of the Wild",
+      "name": "Southwest Canyon with Wild Boar Dry Dog Food",
+      "kcal_per_100g": 360.0,
+      "source": "https://www.russellfeed.com/products/taste-of-the-wild-southwest-canyon"
+    },
+    {
+      "id": "fc4d24367f9a4d7b9d6108a2ec2549c7",
+      "brand": "Taste of the Wild",
+      "name": "Pacific Stream Grain-Free Dry Dog Food",
+      "kcal_per_100g": 360.0,
+      "source": "https://mudbay.com/dog/dog-food/dry/taste-of-the-wild-grain-free-dry-dog-food-pacific-stream/448.html"
+    },
+    {
+      "id": "bf5fc5e24a284c44a7ecb49eb267da97",
+      "brand": "Hill's Science Diet",
+      "name": "Adult Sensitive Stomach & Skin Small Bites Chicken Dry Dog Food",
+      "kcal_per_100g": 373.4,
+      "source": "https://www.1800petmeds.com/dog/food/product/hills-science-diet-adult-sensitive-stomach-skin-small/prod13622.html"
+    },
+    {
+      "id": "58bb7d02a24d4a85ae87a78c399d4034",
+      "brand": "K9 Natural",
+      "name": "Freeze-Dried Lamb Feast Dog Food",
+      "kcal_per_100g": 503.0,
+      "source": "https://www.mudbay.com/dog/dog-food/freezedried/k9-natural-lamb-feast/687.html"
+    },
+    {
+      "id": "614229e7e8a043d399e88138e551b333",
+      "brand": "ZIWI Peak",
+      "name": "Air-Dried Venison Dog Food",
+      "kcal_per_100g": 465.0,
+      "source": "https://petmarketnyc.com/products/ziwi-peak-d-venison-cuisine"
+    },
+    {
+      "id": "bb2cd5b4d07743d7aadffafe42ebe5b7",
+      "brand": "Lifewise",
+      "name": "Biotic Joint Lamb, Rice, Oats & Vegetables Dry Dog Food 13kg",
+      "kcal_per_100g": 395.0,
+      "source": "https://www.woolworths.com.au/shop/productdetails/1114269615"
+    }
+  ]
+}

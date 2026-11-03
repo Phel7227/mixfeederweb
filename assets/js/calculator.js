@@ -1,11 +1,11 @@
-// MixFeeder Calculator page: form, disclaimer gate, kibble product lookup, admin product editor.
+// MixFeeder Calculator page: form, disclaimer gate, kibble product lookup (static product list).
 // Calculation rules live in calculator-core.js. Dog details are never sent to the server.
 (function () {
   var form = document.getElementById("calc-form");
   if (!form || !window.MixFeederCore || !window.FEEDING_CONFIG) return;
   var config = window.FEEDING_CONFIG;
   var core = window.MixFeederCore;
-  var API = "/api/calculator/products";
+  var PRODUCTS_URL = "data/products.json";
 
   var el = {
     accept: document.getElementById("calc-accept"),
@@ -25,14 +25,9 @@
     error: document.getElementById("calc-error"),
     results: document.getElementById("calc-results"),
     placeholder: document.getElementById("calc-placeholder"),
-    admin: document.getElementById("calc-admin"),
-    adminForm: document.getElementById("calc-admin-form"),
-    adminStatus: document.getElementById("calc-admin-status"),
-    adminDelete: document.getElementById("calc-admin-delete")
   };
 
   var selectedProduct = null;
-  var editingProduct = null;
 
   function setText(node, text) {
     node.textContent = text;
@@ -122,38 +117,50 @@
     }
   });
 
-  // Kibble product lookup
+  // Kibble product lookup, from the static product list
+  var products = null;
+  function loadProducts(callback) {
+    if (products) return callback(products);
+    fetch(PRODUCTS_URL)
+      .then(function (r) { return r.json(); })
+      .then(function (data) { products = data.products || []; callback(products); })
+      .catch(function () { callback(null); });
+  }
+  function matchingProducts(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return products.filter(function (p) {
+      var text = (p.brand + " " + p.name).toLowerCase();
+      return words.every(function (w) { return text.indexOf(w) !== -1; });
+    }).sort(function (a, b) {
+      return (a.brand + a.name).toLowerCase() < (b.brand + b.name).toLowerCase() ? -1 : 1;
+    }).slice(0, 20);
+  }
+
   var searchTimer = null;
   function runSearch() {
     var query = el.search.value.trim();
     el.searchResults.innerHTML = "";
     if (!query) return;
-    fetch(API + "?q=" + encodeURIComponent(query))
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        var products = data.products || [];
-        products.forEach(function (product) {
-          var li = document.createElement("li");
-          var btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "product-option";
-          setText(btn, product.brand + " " + product.name + " (" + product.kcal_per_100g + " kcal/100g)");
-          btn.addEventListener("click", function () { chooseProduct(product); });
-          li.appendChild(btn);
-          el.searchResults.appendChild(li);
-        });
-        if (!products.length) {
-          var empty = document.createElement("li");
-          empty.className = "field-hint";
-          setText(empty, "No matching product in the database yet." +
-            (adminSignedIn ? "" : " Only the admin can add new products."));
-          el.searchResults.appendChild(empty);
-        }
-        if (adminSignedIn) prefillAdminForm(query);
-      })
-      .catch(function () {
-        setText(el.searchResults, "Could not load products. Please try again.");
+    loadProducts(function (list) {
+      if (!list) return setText(el.searchResults, "Could not load products. Please try again.");
+      var found = matchingProducts(query);
+      found.forEach(function (product) {
+        var li = document.createElement("li");
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "product-option";
+        setText(btn, product.brand + " " + product.name + " (" + product.kcal_per_100g + " kcal/100g)");
+        btn.addEventListener("click", function () { chooseProduct(product); });
+        li.appendChild(btn);
+        el.searchResults.appendChild(li);
       });
+      if (!found.length) {
+        var empty = document.createElement("li");
+        empty.className = "field-hint";
+        setText(empty, "No matching product in the list yet.");
+        el.searchResults.appendChild(empty);
+      }
+    });
   }
   el.search.addEventListener("input", function () {
     clearTimeout(searchTimer);
@@ -165,77 +172,7 @@
     setText(el.chosen, "Kibble: " + product.brand + " " + product.name +
       " (" + product.kcal_per_100g + " kcal/100g, source: " + product.source + ")");
     el.searchResults.innerHTML = "";
-    if (adminSignedIn) loadAdminForm(product);
   }
-
-  // Admin product editor (server enforces the same rule)
-  var adminSignedIn = false;
-  function prefillAdminForm(query) {
-    if (editingProduct) return;
-    var parts = query.split(/\s+/);
-    el.adminForm.elements.brand.value = parts[0] || "";
-    el.adminForm.elements.name.value = parts.slice(1).join(" ");
-  }
-  function loadAdminForm(product) {
-    editingProduct = product;
-    el.adminForm.elements.brand.value = product.brand;
-    el.adminForm.elements.name.value = product.name;
-    el.adminForm.elements.kcal.value = product.kcal_per_100g;
-    el.adminForm.elements.source.value = product.source;
-    el.adminDelete.hidden = false;
-    setText(el.adminStatus, "Editing " + product.brand + " " + product.name + ".");
-  }
-
-  el.adminForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    var body = {
-      brand: el.adminForm.elements.brand.value,
-      name: el.adminForm.elements.name.value,
-      kcal_per_100g: Number(el.adminForm.elements.kcal.value),
-      source: el.adminForm.elements.source.value
-    };
-    var url = editingProduct ? API + "/" + editingProduct.id : API;
-    fetch(url, {
-      method: editingProduct ? "PUT" : "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    })
-      .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
-      .then(function (res) {
-        if (!res.ok) return setText(el.adminStatus, res.data.error || "Could not save the product.");
-        setText(el.adminStatus, "Saved " + res.data.product.brand + " " + res.data.product.name + ".");
-        chooseProduct(res.data.product);
-        editingProduct = res.data.product;
-        el.adminDelete.hidden = false;
-      })
-      .catch(function () { setText(el.adminStatus, "Could not save the product. Please try again."); });
-  });
-
-  el.adminDelete.addEventListener("click", function () {
-    if (!editingProduct || !window.confirm("Delete this product?")) return;
-    fetch(API + "/" + editingProduct.id, { method: "DELETE" })
-      .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
-      .then(function (res) {
-        if (!res.ok) return setText(el.adminStatus, res.data.error || "Could not delete the product.");
-        if (selectedProduct && selectedProduct.id === editingProduct.id) {
-          selectedProduct = null;
-          setText(el.chosen, "");
-        }
-        editingProduct = null;
-        el.adminForm.reset();
-        el.adminDelete.hidden = true;
-        setText(el.adminStatus, "Product deleted.");
-      })
-      .catch(function () { setText(el.adminStatus, "Could not delete the product. Please try again."); });
-  });
-
-  fetch("/api/session")
-    .then(function (r) { return r.json(); })
-    .then(function (data) {
-      adminSignedIn = !!data.admin;
-      el.admin.hidden = !adminSignedIn;
-    })
-    .catch(function () { el.admin.hidden = true; });
 
   // Validation and calculation
   function validate() {

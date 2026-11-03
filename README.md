@@ -2,6 +2,11 @@
 
 A free, simple website for dog owners. Enter your dog's details and feeding plan, and get a daily calorie target, the kibble and raw split in calories, and a raw recipe in grams. No login for users. No personal data is stored.
 
+## Publish (GitHub Pages)
+- The public site is static: `index.html`, `assets/`, and `data/products.json`. GitHub Pages serves it from the `main` branch root, with the custom domain in `CNAME`.
+- To add or change a kibble product, edit `data/products.json` and push. Products are read-only on the public site.
+- `server.py` and `calculator/products.py` are for local use only (online admin editing). They are not used on the public site.
+
 ## Run locally
     python3 server.py create-admin --user EMAIL   # prompts for a passphrase (12+ characters)
     python3 server.py serve --port 8080           # then open http://127.0.0.1:8080/
