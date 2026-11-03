@@ -223,6 +223,126 @@
         }
       ],
       "feeding_guide_source": "Bunnings listing, Biotic Joint Lamb 2.5kg (retailer chart, not the brand site)"
+    },
+    {
+      "id": "a6ee3e36f77748c9925b9d7e9269a184",
+      "brand": "Lifewise",
+      "name": "Kangaroo Dog Food",
+      "kcal_per_100g": 384.0,
+      "source": "https://www.lifewisepetfood.com/product/kangaroo",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 80,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 110,
+          "high": 140
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 180
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 180,
+          "high": 220
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 220,
+          "high": 280
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/kangaroo (brand site)"
+    },
+    {
+      "id": "d9b375894b8442bca953629ebe1b64af",
+      "brand": "Lifewise",
+      "name": "Ocean Fish Small Bites Dog Food",
+      "kcal_per_100g": 390.0,
+      "source": "https://www.lifewisepetfood.com/product/ocean-fish-small-bites",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 80,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 110,
+          "high": 140
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 180
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 180,
+          "high": 220
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 220,
+          "high": 280
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/ocean-fish-small-bites (brand site)"
+    },
+    {
+      "id": "5d4e7f179a1046f2bcc722bc355700a0",
+      "brand": "Lifewise",
+      "name": "Ocean Fish Large Bites Dog Food",
+      "kcal_per_100g": 380.0,
+      "source": "https://www.lifewisepetfood.com/product/ocean-fish-large-bites",
+      "feeding_guide": [
+        {
+          "min": 5,
+          "max": 10,
+          "low": 80,
+          "high": 110
+        },
+        {
+          "min": 10,
+          "max": 20,
+          "low": 110,
+          "high": 140
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "low": 140,
+          "high": 180
+        },
+        {
+          "min": 30,
+          "max": 40,
+          "low": 180,
+          "high": 220
+        },
+        {
+          "min": 40,
+          "max": 50,
+          "low": 220,
+          "high": 280
+        }
+      ],
+      "feeding_guide_source": "https://www.lifewisepetfood.com/product/ocean-fish-large-bites (brand site)"
     }
   ]
 }
