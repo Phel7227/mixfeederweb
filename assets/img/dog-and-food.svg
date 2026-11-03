@@ -1,71 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 320" role="img" aria-labelledby="t d">
-  <title id="t">Cartoon dog with a bowl of kibble and a raw meat bone</title>
-  <desc id="d">A smiling cartoon dog sits behind a yellow bowl of kibble, with a raw meat bone beside it.</desc>
-  <!-- background -->
-  <circle cx="210" cy="150" r="140" fill="#ffc83d" opacity="0.35"/>
-  <rect x="0" y="262" width="420" height="58" rx="0" fill="#1f5fa8" opacity="0.15"/>
-
-  <!-- dog body -->
-  <ellipse cx="150" cy="208" rx="78" ry="62" fill="#c8894a"/>
-  <!-- legs -->
-  <rect x="104" y="240" width="26" height="46" rx="13" fill="#b5763a"/>
-  <rect x="164" y="240" width="26" height="46" rx="13" fill="#b5763a"/>
-  <!-- tail -->
-  <path d="M74 190 Q44 170 52 140" fill="none" stroke="#c8894a" stroke-width="16" stroke-linecap="round"/>
-  <!-- ears -->
-  <ellipse cx="102" cy="112" rx="22" ry="38" fill="#8a5628" transform="rotate(18 102 112)"/>
-  <ellipse cx="200" cy="112" rx="22" ry="38" fill="#8a5628" transform="rotate(-18 200 112)"/>
-  <!-- head -->
-  <circle cx="150" cy="130" r="66" fill="#d89a58"/>
-  <!-- muzzle -->
-  <ellipse cx="150" cy="158" rx="34" ry="26" fill="#fff3dc"/>
-  <!-- nose -->
-  <ellipse cx="150" cy="148" rx="11" ry="8" fill="#1c2a3a"/>
-  <!-- eyes -->
-  <circle cx="126" cy="122" r="7" fill="#1c2a3a"/>
-  <circle cx="174" cy="122" r="7" fill="#1c2a3a"/>
-  <circle cx="128" cy="120" r="2.4" fill="#ffffff"/>
-  <circle cx="176" cy="120" r="2.4" fill="#ffffff"/>
-  <!-- blush -->
-  <ellipse cx="110" cy="142" rx="8" ry="5" fill="#f08a7e" opacity="0.6"/>
-  <ellipse cx="190" cy="142" rx="8" ry="5" fill="#f08a7e" opacity="0.6"/>
-  <!-- mouth -->
-  <path d="M140 166 Q150 176 160 166" fill="none" stroke="#1c2a3a" stroke-width="3" stroke-linecap="round"/>
-  <!-- tongue -->
-  <path d="M146 172 Q150 188 154 172 Z" fill="#f07a8a"/>
-  <!-- collar -->
-  <path d="M96 196 Q150 220 204 196" fill="none" stroke="#1f5fa8" stroke-width="12" stroke-linecap="round"/>
-  <circle cx="150" cy="218" r="8" fill="#ffc83d" stroke="#e0a800" stroke-width="2"/>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 320" role="img" aria-label="Simple drawing of a dog beside a food bowl">
+  <!-- dog -->
+  <circle cx="150" cy="150" r="70" fill="#f2c28b"/>
+  <circle cx="92" cy="110" r="26" fill="#d9a06a"/>
+  <circle cx="208" cy="110" r="26" fill="#d9a06a"/>
+  <circle cx="126" cy="142" r="7" fill="#3d3d3d"/>
+  <circle cx="174" cy="142" r="7" fill="#3d3d3d"/>
+  <ellipse cx="150" cy="168" rx="12" ry="8" fill="#3d3d3d"/>
+  <ellipse cx="150" cy="232" rx="78" ry="48" fill="#f2c28b"/>
   <!-- food bowl -->
-  <path d="M250 214 H372 Q368 268 311 272 H311 Q254 268 250 214 Z" fill="#1f5fa8"/>
-  <ellipse cx="311" cy="214" rx="61" ry="14" fill="#ffc83d"/>
-  <!-- kibble -->
-  <g fill="#8a5628">
-    <circle cx="282" cy="208" r="6"/>
-    <circle cx="300" cy="202" r="6"/>
-    <circle cx="322" cy="206" r="6"/>
-    <circle cx="340" cy="210" r="6"/>
-    <circle cx="296" cy="216" r="6"/>
-    <circle cx="330" cy="218" r="6"/>
-  </g>
-  <g fill="#c8894a">
-    <circle cx="288" cy="214" r="3"/>
-    <circle cx="318" cy="200" r="3"/>
-    <circle cx="336" cy="216" r="3"/>
-  </g>
-
-  <!-- raw meat bone -->
-  <g transform="translate(330 264) rotate(-12)">
-    <rect x="-40" y="-9" width="80" height="18" rx="9" fill="#f7d9d4"/>
-    <circle cx="-42" cy="-8" r="9" fill="#f7d9d4"/>
-    <circle cx="-42" cy="8" r="9" fill="#f7d9d4"/>
-    <circle cx="42" cy="-8" r="9" fill="#f7d9d4"/>
-    <circle cx="42" cy="8" r="9" fill="#f7d9d4"/>
-    <rect x="-22" y="-7" width="44" height="14" rx="7" fill="#e26b5f" opacity="0.8"/>
-  </g>
-
-  <!-- hearts -->
-  <path d="M46 70 c0 -8 12 -8 12 0 c0 -8 12 -8 12 0 c0 10 -12 16 -12 16 c0 0 -12 -6 -12 -16 Z" fill="#1f5fa8" opacity="0.5"/>
-  <path d="M366 92 c0 -6 9 -6 9 0 c0 -6 9 -6 9 0 c0 7 -9 12 -9 12 c0 0 -9 -5 -9 -12 Z" fill="#ffc83d"/>
+  <path d="M250 218 H372 Q364 270 311 272 Q258 270 250 218 Z" fill="#8fbfe6"/>
+  <ellipse cx="311" cy="218" rx="61" ry="13" fill="#ffe89a"/>
+  <circle cx="290" cy="214" r="6" fill="#c08a50"/>
+  <circle cx="312" cy="210" r="6" fill="#c08a50"/>
+  <circle cx="332" cy="216" r="6" fill="#c08a50"/>
 </svg>

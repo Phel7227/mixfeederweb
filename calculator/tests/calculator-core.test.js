@@ -23,7 +23,6 @@ const CONFIRMED = {
   },
   styles: {
     barf: { label: "BARF", split: { muscle: 0.70, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0.10 } },
-    prey: { label: "Prey Model (PMR)", split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 } },
     "80-10-10": { label: "80/10/10", split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 } }
   }
 };
@@ -90,7 +89,7 @@ test("raw calories are held back while an ingredient range is missing", () => {
 test("a style with no vegetables does not need a vegetable range", () => {
   const c = clone(CONFIRMED);
   c.ingredients.veg.kcalPer100g = { low: null, high: null };
-  const r = core.calculate(input({ style: "prey", rawPct: 100 }), c, null);
+  const r = core.calculate(input({ style: "80-10-10", rawPct: 100 }), c, null);
   assert.equal(r.status, "ok");
 });
 
@@ -141,7 +140,7 @@ test("an unknown basis falls back to average", () => {
 });
 
 test("recipe grams follow the style split and skip zero shares", () => {
-  const r = core.calculate(input({ style: "prey", rawPct: 100 }), CONFIRMED, null);
+  const r = core.calculate(input({ style: "80-10-10", rawPct: 100 }), CONFIRMED, null);
   assert.deepEqual(r.recipe.map((i) => i.label),
     ["Muscle meat", "Edible bone", "Liver", "Other secreting organs"]);
   const total = r.recipe.reduce((sum, i) => sum + i.grams, 0);

@@ -21,8 +21,7 @@ window.FEEDING_CONFIG = {
       "Puppy 4-12 months": 2.0,
       "Adult, intact": 1.8,
       "Adult, neutered": 1.6,
-      "Senior": 1.4,
-      "Weight loss": 1.0
+      "Senior": 1.4
     }
   },
   bodyShape: {
@@ -48,42 +47,9 @@ window.FEEDING_CONFIG = {
       label: "BARF",
       split: { muscle: 0.70, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0.10 }
     },
-    prey: {
-      label: "Prey Model (PMR)",
-      split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 }
-    },
     "80-10-10": {
       label: "80/10/10",
       split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 }
     }
   },
-  // Breed list shown in the form. Owner to confirm the list.
-  breeds: [
-    "Mixed or unknown",
-    "Australian Cattle Dog",
-    "Australian Kelpie",
-    "Beagle",
-    "Border Collie",
-    "Boxer",
-    "Bulldog",
-    "Cavalier King Charles Spaniel",
-    "Chihuahua",
-    "Cocker Spaniel",
-    "Dachshund",
-    "French Bulldog",
-    "German Shepherd",
-    "Golden Retriever",
-    "Greyhound",
-    "Jack Russell Terrier",
-    "Labrador Retriever",
-    "Maltese",
-    "Miniature Schnauzer",
-    "Pomeranian",
-    "Poodle",
-    "Pug",
-    "Rottweiler",
-    "Shih Tzu",
-    "Siberian Husky",
-    "Staffordshire Bull Terrier"
-  ]
 };

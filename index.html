@@ -21,7 +21,6 @@
       <h1>MixFeeder Calculator</h1>
       <p>Work out your dog's daily calories, and how to split them between kibble and raw food, with a raw recipe in grams.</p>
     </div>
-    <img src="assets/img/dog-and-food.svg" alt="Cartoon dog sitting beside a bowl of kibble and a raw meat bone" width="420" height="320">
   </div>
 </section>
 <section class="section calc">
@@ -36,28 +35,15 @@
     </div>
     <form class="enquiry-form calc-form" id="calc-form" novalidate>
       <h2>Your dog</h2>
-      <div class="field-row">
-        <div class="field">
-          <label for="calc-age">Age (months)</label>
-          <input id="calc-age" name="age" type="text" inputmode="numeric" autocomplete="off">
-          <p class="field-error" id="calc-age-err"></p>
-        </div>
-        <div class="field">
-          <label for="calc-weight">Weight (kg)</label>
-          <input id="calc-weight" name="weight" type="text" inputmode="decimal" autocomplete="off">
-          <p class="field-hint">From 0.5 to 90 kg</p>
-          <p class="field-error" id="calc-weight-err"></p>
-        </div>
+      <div class="field">
+        <label for="calc-weight">Weight (kg)</label>
+        <input id="calc-weight" name="weight" type="text" inputmode="decimal" autocomplete="off">
+        <p class="field-hint">From 0.5 to 90 kg</p>
+        <p class="field-error" id="calc-weight-err"></p>
       </div>
       <div class="field">
-        <label for="calc-breed">Breed</label>
-        <select id="calc-breed" name="breed"></select>
-        <p class="field-error" id="calc-breed-err"></p>
-      </div>
-      <div class="field">
-        <label for="calc-factor">Activity or life stage</label>
+        <label for="calc-factor">Life stage</label>
         <select id="calc-factor" name="factor"></select>
-        <p class="field-hint">Activity and life-stage options are being confirmed. The calorie target shows once they are.</p>
       </div>
       <div class="field">
         <label for="calc-shape">Body shape</label>
@@ -70,7 +56,6 @@
       <fieldset class="field" id="calc-style">
         <legend>Feeding style</legend>
         <div class="field check"><input id="style-barf" name="style" type="radio" value="barf"><label for="style-barf">BARF</label></div>
-        <div class="field check"><input id="style-prey" name="style" type="radio" value="prey"><label for="style-prey">Prey Model (PMR)</label></div>
         <div class="field check"><input id="style-8010" name="style" type="radio" value="80-10-10"><label for="style-8010">80/10/10</label></div>
         <p class="field-error" id="calc-style-err"></p>
       </fieldset>

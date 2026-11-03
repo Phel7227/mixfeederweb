@@ -9,9 +9,7 @@
 
   var el = {
     accept: document.getElementById("calc-accept"),
-    ageMonths: document.getElementById("calc-age"),
     weight: document.getElementById("calc-weight"),
-    breed: document.getElementById("calc-breed"),
     factor: document.getElementById("calc-factor"),
     bodyShape: document.getElementById("calc-shape"),
     basis: document.getElementById("calc-basis"),
@@ -43,14 +41,6 @@
     if (errorEl) setText(errorEl, message || "");
     return !message;
   }
-
-  // Breeds
-  config.breeds.forEach(function (breed) {
-    var option = document.createElement("option");
-    option.value = breed;
-    option.textContent = breed;
-    el.breed.appendChild(option);
-  });
 
   // Activity / life-stage factors. Empty until the owner confirms the table.
   var factorKeys = Object.keys(config.factors.table);
@@ -223,16 +213,12 @@
 
   // Validation and calculation
   function validate() {
-    var ageMonths = el.ageMonths.value.trim();
     var weight = el.weight.value.trim();
     var raw = el.rawPct.value.trim();
     var ok = true;
-    ok = fieldError("calc-age", ageMonths === "" || !/^\d+$/.test(ageMonths) || Number(ageMonths) > 420
-      ? "Enter the dog's age in whole months (0 to 420)." : "") && ok;
     var w = Number(weight);
     ok = fieldError("calc-weight", weight === "" || isNaN(w) || w < 0.5 || w > 90
       ? "Enter the weight in kg (0.5 to 90)." : "") && ok;
-    ok = fieldError("calc-breed", el.breed.value ? "" : "Choose a breed, or Mixed or unknown.") && ok;
     ok = fieldError("calc-raw", raw === "" || !/^\d+$/.test(raw) || Number(raw) > 100
       ? "Enter the raw share as a whole number from 0 to 100." : "") && ok;
     ok = fieldError("calc-style", selectedStyle() ? "" : "Choose a feeding style.") && ok;
