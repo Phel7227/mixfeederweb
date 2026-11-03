@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true">
-  <g fill="#6b3d1e">
+  <g fill="#f6b44a">
     <!-- head and snout -->
     <circle cx="66" cy="30" r="17"/>
     <rect x="76" y="25" width="22" height="13" rx="6.5"/>
@@ -15,5 +15,5 @@
     <ellipse cx="44" cy="107" rx="14" ry="6"/>
   </g>
   <!-- tail -->
-  <path d="M34 84 Q12 80 16 58" fill="none" stroke="#6b3d1e" stroke-width="7" stroke-linecap="round"/>
+  <path d="M34 84 Q12 80 16 58" fill="none" stroke="#f6b44a" stroke-width="7" stroke-linecap="round"/>
 </svg>
