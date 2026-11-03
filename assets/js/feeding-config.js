@@ -42,14 +42,16 @@ window.FEEDING_CONFIG = {
     organs: { label: "Other secreting organs", kcalPer100g: { low: 100, high: 120 } },
     veg: { label: "Vegetables and fruit", kcalPer100g: { low: 20, high: 30 } }
   },
-  // Activity level: multiplier on top of the life-stage factor. Normal leaves the target as it is.
-  // PROPOSED values, not yet confirmed by the owner.
+  // Activity level 1 to 5: multiplier on top of the life-stage factor. Steps are even (0.2 apart).
+  // Level 1 is the default. Hours and multipliers are PROPOSED, not yet confirmed by the owner.
   activity: {
     label: "Activity level",
     options: {
-      low: { label: "1", factor: 0.6, guide: "Less than 1 hour of activity a day. Short walks, mostly resting." },
-      normal: { label: "2", factor: 1.0, guide: "About 1 to 2 hours of activity a day. Daily walks and play." },
-      high: { label: "3", factor: 1.25, guide: "More than 2 hours of activity a day. Long walks, running, or a working or sport dog." }
+      "1": { label: "1", factor: 0.6, guide: "Under 30 minutes of activity a day. Mostly resting, with short walks." },
+      "2": { label: "2", factor: 0.8, guide: "About 30 minutes to 1 hour a day. Short walks." },
+      "3": { label: "3", factor: 1.0, guide: "About 1 to 2 hours a day. Daily walks and play." },
+      "4": { label: "4", factor: 1.2, guide: "About 2 to 3 hours a day. Long walks or running." },
+      "5": { label: "5", factor: 1.4, guide: "More than 3 hours a day. A working or sport dog." }
     }
   },
   // Feeding rate: daily food in grams for each weight band (lower bound inclusive, upper bound exclusive)

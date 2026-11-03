@@ -64,7 +64,7 @@
     if (!config.bodyShape.confirmed || !shape || shape.factor === null || shape.factor === undefined) {
       return { status: "pending", missing: "bodyShape" };
     }
-    var activity = config.activity.options[input.activity || "normal"];
+    var activity = config.activity.options[input.activity || "1"];
     if (!activity) return { status: "error", error: "Choose an activity level." };
     var factor = config.factors.table[input.factorKey] * shape.factor * activity.factor;
 

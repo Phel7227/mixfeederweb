@@ -8,9 +8,9 @@ const CONFIRMED = {
   factors: { confirmed: true, table: { adult: 1.6 } },
   activity: {
     options: {
-      low: { label: "Low", factor: 0.6 },
-      normal: { label: "Normal", factor: 1.0 },
-      high: { label: "High", factor: 1.25 }
+      "1": { label: "1", factor: 0.6 },
+      "3": { label: "3", factor: 1.0 },
+      "5": { label: "5", factor: 1.4 }
     }
   },
   bodyShape: {
@@ -36,7 +36,7 @@ const CONFIRMED = {
 const PRODUCT = { brand: "Test", name: "Kibble", kcal_per_100g: 400 };
 
 function input(overrides) {
-  return Object.assign({ weightKg: 10, rawPct: 50, style: "barf", factorKey: "adult", bodyShape: "ideal" }, overrides);
+  return Object.assign({ weightKg: 10, rawPct: 50, style: "barf", factorKey: "adult", bodyShape: "ideal", activity: "3" }, overrides);
 }
 
 function clone(obj) {
@@ -120,10 +120,10 @@ test("with no treats the food is the whole target", () => {
   assert.equal(r.foodKcal, r.derKcal);
 });
 
-test("activity level multiplies the target: low lowers it, normal leaves it, high raises it", () => {
-  const normal = core.calculate(input({ rawPct: 0, activity: "normal" }), CONFIRMED, PRODUCT);
-  const low = core.calculate(input({ rawPct: 0, activity: "low" }), CONFIRMED, PRODUCT);
-  const high = core.calculate(input({ rawPct: 0, activity: "high" }), CONFIRMED, PRODUCT);
+test("activity level multiplies the target: level 1 lowers it, level 3 leaves it, level 5 raises it", () => {
+  const normal = core.calculate(input({ rawPct: 0, activity: "3" }), CONFIRMED, PRODUCT);
+  const low = core.calculate(input({ rawPct: 0, activity: "1" }), CONFIRMED, PRODUCT);
+  const high = core.calculate(input({ rawPct: 0, activity: "5" }), CONFIRMED, PRODUCT);
   assert.ok(low.derKcal < normal.derKcal);
   assert.ok(high.derKcal > normal.derKcal);
   assert.equal(core.calculate(input({ rawPct: 0 }), CONFIRMED, PRODUCT).derKcal, normal.derKcal);
