@@ -19,7 +19,7 @@
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body {
-  font-size: 15px;
+  font-size: 13px;
   margin: 0;
   font-family: var(--round);
   color: var(--ink);
@@ -36,25 +36,25 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 /* Header */
 .site-header { background: #f6c25c; color: #3d2213; border-bottom: 4px solid #3d2213; }
 .site-header .container { display: flex; align-items: center; height: 44px; }
-.brand { text-decoration: none; color: #3d2213; font-weight: 700; font-size: 13px; letter-spacing: .3px; }
-.brand-icon { display: inline-block; width: 24px; height: 20px; margin-right: 6px; vertical-align: middle; background: url("../img/dog-silhouette.svg?v=20261104m") center / contain no-repeat; }
+.brand { text-decoration: none; color: #3d2213; font-weight: 700; font-size: 11px; letter-spacing: .3px; }
+.brand-icon { display: inline-block; width: 24px; height: 20px; margin-right: 6px; vertical-align: middle; background: url("../img/dog-silhouette.svg?v=20261104n") center / contain no-repeat; }
 
 /* Hero */
 .hero { position: relative; background: transparent; border-bottom: 1px solid #f6c25c; }
 .hero img { width: min(420px, 100%); height: auto; }
 .hero-inner { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; padding-top: 40px; padding-bottom: 40px; }
-.hero h1 { margin: 0 0 12px; font-size: clamp(31px, 5vw, 47px); color: #3d2213; }
-.hero h1::after { content: ""; display: block; width: 120px; height: 60px; margin-top: -6px; margin-top: 12px; background: url("../img/bone-cream.png?v=20261104m") left center / contain no-repeat; }
-.hero p { margin: 0; max-width: 480px; font-size: 17px; color: #3d2213; }
+.hero h1 { margin: 0 0 12px; font-size: clamp(29px, 5vw, 45px); color: #3d2213; }
+.hero h1::after { content: ""; display: block; width: 120px; height: 60px; margin-top: -6px; margin-top: 12px; background: url("../img/bone-cream.png?v=20261104n") left center / contain no-repeat; }
+.hero p { margin: 0; max-width: 480px; font-size: 15px; color: #3d2213; }
 
 /* Sections */
 .section { padding: 40px 0 56px; }
-.intro { max-width: 680px; margin: 0 0 24px; font-size: 16px; }
+.intro { max-width: 680px; margin: 0 0 24px; font-size: 14px; }
 
 /* Buttons */
 .btn {
   display: inline-block; background: var(--yellow); color: var(--ink); border: 0; cursor: pointer;
-  padding: 12px 28px; border-radius: 6px; font: inherit; font-weight: 700; font-size: 16px;
+  padding: 12px 28px; border-radius: 6px; font: inherit; font-weight: 700; font-size: 14px;
 }
 .btn:hover { background: var(--yellow-dark); }
 .btn:focus-visible, .product-option:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
@@ -70,28 +70,28 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 
 /* Form */
 .enquiry-form { background: #fff; border-radius: 10px; padding: 32px; box-shadow: 0 6px 24px rgba(242, 189, 22, .18); border-top: 6px solid var(--yellow); }
-.calc-form h2, .calc-admin h2 { font-size: 21px; margin: 28px 0 16px; }
+.calc-form h2, .calc-admin h2 { font-size: 19px; margin: 28px 0 16px; }
 .calc-form h2:first-child { margin-top: 0; }
-.calc-form h2::before, .calc-results h2::before { content: ""; display: inline-block; width: 36px; height: 18px; margin-right: 10px; vertical-align: middle; background: url("../img/bone-cream.png?v=20261104m") center / contain no-repeat; }
+.calc-form h2::before, .calc-results h2::before { content: ""; display: inline-block; width: 36px; height: 18px; margin-right: 10px; vertical-align: middle; background: url("../img/bone-cream.png?v=20261104n") center / contain no-repeat; }
 .calc-form fieldset { border: 0; padding: 0; margin: 0 0 20px; }
 .field { margin-bottom: 20px; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .field label, .calc-form legend, .field-label { display: block; font-weight: 600; margin-bottom: 6px; }
 .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field input[type="password"], .field textarea, .calc-form select {
-  width: 100%; font: inherit; font-size: 15px; color: var(--ink); background: #fff;
+  width: 100%; font: inherit; font-size: 13px; color: var(--ink); background: #fff;
   border: 1px solid #8a94a8; border-radius: 6px; padding: 11px 12px;
 }
 .field input[type="radio"], .field input[type="checkbox"] { width: 18px; height: 18px; margin: 0 8px 0 0; accent-color: var(--blue); vertical-align: middle; }
 .field.check label { display: inline; font-weight: 400; }
 .field [aria-invalid="true"] { border-color: var(--error); border-width: 2px; }
-.field-hint { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
-.field-error { margin: 6px 0 0; font-size: 13px; font-weight: 600; color: var(--error); }
+.field-hint { margin: 6px 0 0; font-size: 11px; color: var(--muted); }
+.field-error { margin: 6px 0 0; font-size: 11px; font-weight: 600; color: var(--error); }
 .field-error:empty { display: none; }
-.form-note { font-size: 13px; color: var(--muted); }
+.form-note { font-size: 11px; color: var(--muted); }
 .form-status { margin-top: 16px; }
 .form-status:empty { display: none; }
 .hp { position: absolute; left: -9999px; }
-.calc-kibble-pct { font-size: 21px; font-weight: 700; color: var(--blue-dark); margin: 8px 0 0; }
+.calc-kibble-pct { font-size: 19px; font-weight: 700; color: var(--blue-dark); margin: 8px 0 0; }
 .product-results { list-style: none; padding: 0; margin: 8px 0 0; }
 .product-option { width: 100%; text-align: left; background: var(--yellow-pale); border: 1px solid #c4d8f0; border-radius: 6px; padding: 10px 12px; margin-bottom: 6px; font: inherit; cursor: pointer; color: var(--ink); }
 .product-option:hover { background: var(--yellow-light); }
@@ -109,7 +109,7 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 
 /* Footer */
 .site-footer { background: #f6c25c; color: #3d2213; padding: 28px 0; margin-top: 24px; border-top: 4px solid #3d2213; }
-.copyright { font-size: 13px; }
+.copyright { font-size: 11px; }
 
 @media (max-width: 640px) {
   .field-row { grid-template-columns: 1fr; }
@@ -132,7 +132,7 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 .shape-guide { margin: -8px 0 20px; }
 .shape-guide summary { cursor: pointer; font-weight: 700; color: var(--blue-dark); }
 .shape-guide .field-hint { margin: 8px 0 12px; }
-.shape-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.shape-table { width: 100%; border-collapse: collapse; font-size: 11px; }
 .shape-table th, .shape-table td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #f3e7a8; vertical-align: middle; }
 .shape-table th { color: var(--blue-dark); font-weight: 700; }
 .shape-table td:first-child { font-weight: 700; width: 56px; }
@@ -142,7 +142,7 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 .calc-consent { margin: 4px 0 18px; }
 
 /* Ratio note under each feeding style */
-.ratio-note { display: block; margin: 2px 0 0 26px; font-size: 13px; color: var(--muted); }
+.ratio-note { display: block; margin: 2px 0 0 26px; font-size: 11px; color: var(--muted); }
 
 /* Kibble entry mode choice */
 #calc-mode legend { margin-bottom: 8px; }
