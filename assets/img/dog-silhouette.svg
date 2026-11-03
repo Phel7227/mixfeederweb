@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" aria-hidden="true">
+  <g fill="#35597a">
+    <!-- head and snout -->
+    <circle cx="66" cy="30" r="17"/>
+    <rect x="76" y="25" width="22" height="13" rx="6.5"/>
+    <!-- floppy ear hanging behind the head -->
+    <path d="M54 22 Q44 26 46 46 Q50 52 56 46 Q58 34 62 24 Z"/>
+    <!-- neck and chest -->
+    <rect x="56" y="40" width="18" height="24" rx="7"/>
+    <ellipse cx="62" cy="74" rx="20" ry="30"/>
+    <!-- sitting haunch -->
+    <ellipse cx="44" cy="86" rx="17" ry="20"/>
+    <!-- front leg and back foot -->
+    <rect x="64" y="92" width="10" height="24" rx="4"/>
+    <ellipse cx="44" cy="107" rx="14" ry="6"/>
+  </g>
+  <!-- tail -->
+  <path d="M34 84 Q12 80 16 58" fill="none" stroke="#35597a" stroke-width="7" stroke-linecap="round"/>
+</svg>
