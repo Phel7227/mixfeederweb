@@ -69,6 +69,8 @@ window.FEEDING_CONFIG = {
     bone: { label: "Bone", parts: ["bone"] },
     veg: { label: "Vegtable, Fruit and seeds", parts: ["veg"] }
   },
+  // Breakdown of the vegetable group, shown when expanded. Each value is a share of the vegetable grams.
+  vegBreakdown: { "Vegetables": 7, "Seeds and Nuts": 2, "Fruit": 1 },
   styles: {
     barf: {
       label: "BARF",

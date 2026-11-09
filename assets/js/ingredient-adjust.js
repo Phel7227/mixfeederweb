@@ -88,7 +88,21 @@
     note.hidden = true;
     li.appendChild(note);
 
-    rows[groupKey] = { li: li, input: input, note: note };
+    var sub = null;
+    if (groupKey === "veg") {
+      var details = document.createElement("details");
+      details.className = "ingredient-sub";
+      var summary = document.createElement("summary");
+      summary.textContent = "Show breakdown";
+      sub = document.createElement("ul");
+      sub.className = "ingredient-mix";
+      details.appendChild(summary);
+      details.appendChild(sub);
+      li.appendChild(details);
+      rows[groupKey] = { li: li, input: input, note: note, details: details, sub: sub };
+    } else {
+      rows[groupKey] = { li: li, input: input, note: note };
+    }
     input.addEventListener("input", function () {
       source = groupKey;
       update();
@@ -106,6 +120,23 @@
       if (!inStyle) row.input.value = "";
       row.note.hidden = inStyle;
       row.note.textContent = inStyle ? "" : "Not part of this style.";
+      if (row.details) row.details.hidden = !inStyle;
+    });
+  }
+
+  // Vegetable breakdown: each part is its share of the vegetable grams.
+  function renderVegBreakdown() {
+    var sub = rows.veg.sub;
+    var vegGrams = parseFloat(rows.veg.input.value);
+    var hasVeg = vegGrams > 0 && !rows.veg.input.disabled;
+    var parts = config.vegBreakdown;
+    var total = Object.keys(parts).reduce(function (sum, name) { return sum + parts[name]; }, 0);
+    sub.innerHTML = "";
+    Object.keys(parts).forEach(function (name) {
+      var li = document.createElement("li");
+      var amount = hasVeg ? Math.round(vegGrams * parts[name] / total) + " g" : "-";
+      li.textContent = name + " (" + parts[name] + "%): " + amount;
+      sub.appendChild(li);
     });
   }
 
@@ -148,6 +179,7 @@
     var styleKey = styleSelect.value;
     renderStyle(styleKey);
     recalc(styleKey);
+    renderVegBreakdown();
   }
 
   styleSelect.addEventListener("change", update);

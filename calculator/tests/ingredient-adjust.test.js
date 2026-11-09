@@ -65,3 +65,16 @@ test("unknown style or group gives no result", () => {
   assert.equal(adjust.adjustRecipe(CONFIG, "prey", "meat", 100), null);
   assert.equal(adjust.adjustRecipe(CONFIG, "barf", "fish", 100), null);
 });
+
+// The vegetable breakdown must add up to the vegetable share of BARF, so it splits the veg grams fully.
+test("vegetable breakdown matches the vegetable share of BARF", () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const vm = require("node:vm");
+  const sandbox = { window: {} };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, "../../assets/js/feeding-config.js"), "utf8"), sandbox);
+  const cfg = sandbox.window.FEEDING_CONFIG;
+  const total = Object.values(cfg.vegBreakdown).reduce((a, b) => a + b, 0);
+  const vegShare = adjust.groupShare(cfg.styles.barf.split, cfg.groups.veg);
+  assert.equal(total, Math.round(vegShare * 100));
+});
