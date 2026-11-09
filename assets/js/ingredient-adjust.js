@@ -1,6 +1,6 @@
-// Ingredient input: the user enters grams for one ingredient group (meat, organ, bone or veg),
-// and every other ingredient is scaled to keep the chosen feeding style's split.
-// Rules are in adjustRecipe (no DOM, testable in node). Settings live in feeding-config.js.
+// Ingredient list: the user types grams in any one row (meat, organ, bone or veg), and the other rows
+// are scaled to keep the chosen feeding style's split. Rules are in adjustRecipe (no DOM, testable in
+// node). Settings live in feeding-config.js.
 (function (root) {
   // Share of the raw portion that a group makes up, for one style (0 to 1).
   function groupShare(split, group) {
@@ -35,81 +35,127 @@
 
   root.IngredientAdjust = api;
 
-  // Page wiring. Runs only on a page that has the ingredient section.
-  var form = document.getElementById("ingredient-form");
-  if (!form || !root.FEEDING_CONFIG) return;
+  // Page wiring. Runs only on the ingredient page.
+  var list = document.getElementById("ingredient-list");
+  if (!list || !root.FEEDING_CONFIG) return;
   var config = root.FEEDING_CONFIG;
-  var el = {
-    group: document.getElementById("ingredient-group"),
-    style: document.getElementById("ingredient-style"),
-    grams: document.getElementById("ingredient-grams"),
-    error: document.getElementById("ingredient-error"),
-    results: document.getElementById("ingredient-results"),
-    meatMix: document.getElementById("ingredient-meat-mix")
-  };
+  var styleSelect = document.getElementById("ingredient-style");
+  var errorNode = document.getElementById("ingredient-error");
+  var totalNode = document.getElementById("ingredient-total");
+  var rows = {};
+  var source = null; // the group the user last typed in
 
-  function fillSelect(select, options) {
-    options.forEach(function (opt) {
-      var o = document.createElement("option");
-      o.value = opt.value;
-      o.textContent = opt.label;
-      select.appendChild(o);
+  Object.keys(config.styles).forEach(function (key) {
+    var o = document.createElement("option");
+    o.value = key;
+    o.textContent = config.styles[key].label;
+    styleSelect.appendChild(o);
+  });
+
+  // Build one row per group: label, optional meat breakdown, and a gram input.
+  Object.keys(config.groups).forEach(function (groupKey) {
+    var group = config.groups[groupKey];
+    var li = document.createElement("li");
+    li.className = "ingredient-row";
+
+    var head = document.createElement("div");
+    head.className = "ingredient-head";
+    var label = document.createElement("label");
+    label.htmlFor = "ingredient-" + groupKey;
+    label.textContent = group.label;
+    head.appendChild(label);
+
+    var input = document.createElement("input");
+    input.type = "text";
+    input.inputMode = "decimal";
+    input.autocomplete = "off";
+    input.id = "ingredient-" + groupKey;
+    input.className = "ingredient-input";
+    input.setAttribute("aria-describedby", "ingredient-" + groupKey + "-note");
+    var unit = document.createElement("span");
+    unit.className = "ingredient-unit";
+    unit.textContent = "g";
+    var field = document.createElement("div");
+    field.className = "ingredient-field";
+    field.appendChild(input);
+    field.appendChild(unit);
+    head.appendChild(field);
+    li.appendChild(head);
+
+    var note = document.createElement("p");
+    note.className = "ingredient-note";
+    note.id = "ingredient-" + groupKey + "-note";
+    note.hidden = true;
+    li.appendChild(note);
+
+    rows[groupKey] = { li: li, input: input, note: note };
+    input.addEventListener("input", function () {
+      source = groupKey;
+      update();
     });
-  }
+    list.appendChild(li);
+  });
 
-  fillSelect(el.group, Object.keys(config.groups).map(function (key) {
-    return { value: key, label: config.groups[key].label };
-  }));
-  fillSelect(el.style, Object.keys(config.styles).map(function (key) {
-    return { value: key, label: config.styles[key].label };
-  }));
-
-  // Small-text meat breakdown under Meat, for the chosen style. Hidden for other groups and styles.
-  function renderMeatMix() {
-    var mix = config.meatMix && config.meatMix.confirmed && config.meatMix.styles[el.style.value];
-    var show = el.group.value === "meat" && !!mix;
-    el.meatMix.hidden = !show;
-    el.meatMix.textContent = show ? "Recommended ratio only: " + Object.keys(mix).map(function (name) {
+  // Small-text meat breakdown under Meat, for the chosen style. Owner-confirmed values only.
+  function renderMeatNote(styleKey) {
+    var mix = config.meatMix && config.meatMix.confirmed && config.meatMix.styles[styleKey];
+    var note = rows.meat.note;
+    note.hidden = !mix;
+    note.textContent = mix ? "Recommended ratio only: " + Object.keys(mix).map(function (name) {
       return name + " " + mix[name] + "%";
     }).join(", ") : "";
   }
 
-  function row(label, value) {
-    var li = document.createElement("li");
-    li.textContent = label + ": " + value;
-    return li;
-  }
-
-  function render() {
-    renderMeatMix();
-    var grams = parseFloat(el.grams.value);
-    var result = adjustRecipe(config, el.style.value, el.group.value, grams);
-    el.results.innerHTML = "";
-    if (!el.grams.value.trim()) {
-      el.error.textContent = "";
-      el.results.hidden = true;
-      return;
-    }
-    if (!result) {
-      el.error.textContent = "Enter an amount greater than 0 grams.";
-      el.results.hidden = true;
-      return;
-    }
-    el.error.textContent = "";
-    var list = document.createElement("ul");
-    list.appendChild(row("Raw portion", result.rawTotal + " g"));
+  // Groups that this style leaves out (share 0) are read-only, and their rows say so.
+  function renderStyle(styleKey) {
+    var style = config.styles[styleKey];
     Object.keys(config.groups).forEach(function (groupKey) {
-      var group = config.groups[groupKey];
-      var sum = group.parts.reduce(function (s, key) { return s + (result.perIngredient[key] || 0); }, 0);
-      list.appendChild(row(group.label, sum + " g"));
+      var inStyle = groupShare(style.split, config.groups[groupKey]) > 0;
+      var row = rows[groupKey];
+      row.input.disabled = !inStyle;
+      row.note.hidden = inStyle;
+      row.note.textContent = inStyle ? "" : "Not part of this style.";
     });
-    el.results.appendChild(list);
-    el.results.hidden = false;
+    renderMeatNote(styleKey);
   }
 
-  el.group.addEventListener("change", render);
-  el.style.addEventListener("change", render);
-  el.grams.addEventListener("input", render);
-  form.addEventListener("submit", function (event) { event.preventDefault(); render(); });
-  render();
+  function clearOthers() {
+    Object.keys(config.groups).forEach(function (groupKey) {
+      if (groupKey !== source && !rows[groupKey].input.disabled) rows[groupKey].input.value = "";
+    });
+  }
+
+  // Set every row from the source row. Rows other than the source are overwritten.
+  function update() {
+    var styleKey = styleSelect.value;
+    var style = config.styles[styleKey];
+    renderStyle(styleKey);
+    errorNode.textContent = "";
+    totalNode.textContent = "";
+    if (!source) return;
+
+    var raw = rows[source].input.value.trim();
+    var grams = Number(raw);
+    var result = raw === "" ? null : adjustRecipe(config, styleKey, source, grams);
+    if (!result) {
+      clearOthers();
+      if (raw !== "") {
+        errorNode.textContent = !isFinite(grams) || !(grams > 0)
+          ? config.groups[source].label + ": enter an amount greater than 0 grams."
+          : config.groups[source].label + " is not part of this style.";
+      }
+      return;
+    }
+    Object.keys(config.groups).forEach(function (groupKey) {
+      if (groupKey === source || rows[groupKey].input.disabled) return;
+      var sum = config.groups[groupKey].parts.reduce(function (s, key) {
+        return s + (result.perIngredient[key] || 0);
+      }, 0);
+      rows[groupKey].input.value = String(sum);
+    });
+    totalNode.textContent = "Raw total: " + result.rawTotal + " g (" + style.label + ")";
+  }
+
+  styleSelect.addEventListener("change", update);
+  update();
 })(typeof window !== "undefined" ? window : globalThis);

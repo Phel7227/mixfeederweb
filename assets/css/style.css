@@ -76,7 +76,7 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 .field { margin-bottom: 20px; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .field label, .calc-form legend, .field-label { display: block; font-weight: 600; margin-bottom: 6px; }
-.field input[type="text"], .field input[type="email"], .field input[type="tel"], .field input[type="password"], .field textarea, .calc-form select {
+.field input[type="text"], .field input[type="email"], .field input[type="tel"], .field input[type="password"], .field textarea, .calc-form select, .ingredient-controls select {
   width: 100%; font: inherit; font-size: 13px; color: var(--ink); background: #fff;
   border: 1px solid #8a94a8; border-radius: 6px; padding: 11px 12px;
 }
@@ -149,10 +149,33 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 
 
 /* Site navigation */
-.site-nav { background: #f6c25c; color: #3d2213; border-bottom: 4px solid #3d2213; }
-.site-nav .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; flex-wrap: wrap; }
-.site-nav-brand { color: #3d2213; font-weight: 700; text-decoration: none; }
-.site-nav-links { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
-.site-nav-links a { color: #3d2213; font-weight: 600; text-decoration: none; }
-.site-nav-links a:hover, .site-nav-brand:hover { text-decoration: underline; }
-.site-nav a:focus-visible { outline: 3px solid #3d2213; outline-offset: 2px; }
+.site-nav { background: #fffaf0; border-bottom: 1px solid rgba(61, 34, 19, .12); position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(1.2) blur(6px); }
+.site-nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
+.site-nav-brand { color: #3d2213; font-weight: 700; font-size: 17px; letter-spacing: .2px; text-decoration: none; display: inline-flex; align-items: baseline; gap: 6px; }
+.site-nav-brand span { font-weight: 400; color: #8a6a3f; }
+.site-nav-links { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.site-nav-links a { display: inline-block; padding: 8px 16px; border-radius: 999px; color: #3d2213; font-size: 14px; font-weight: 600; text-decoration: none; transition: background .15s ease, color .15s ease; }
+.site-nav-links a:hover { background: #f6c25c; }
+.site-nav-links a[aria-current="page"] { background: #3d2213; color: #fffaf0; }
+.site-nav a:focus-visible { outline: 3px solid #f6c25c; outline-offset: 2px; }
+@media (max-width: 560px) {
+  .site-nav-inner { min-height: 0; padding-top: 10px; padding-bottom: 10px; flex-direction: column; align-items: flex-start; }
+  .site-nav-links a { padding: 6px 12px; }
+}
+
+/* Ingredient list page */
+.hero-compact .hero-inner { padding-top: 28px; padding-bottom: 22px; }
+.ingredient-page { padding-top: 28px; }
+.ingredient-controls { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 8px; }
+.ingredient-controls .field { margin-bottom: 0; min-width: 240px; }
+.ingredient-total { margin: 0 0 20px; font-weight: 700; color: var(--blue-dark); }
+.ingredient-list { list-style: none; margin: 0; padding: 0; background: #fff; border-radius: 10px; box-shadow: 0 6px 24px rgba(242, 189, 22, .18); border-top: 6px solid var(--blue); max-width: 720px; }
+.ingredient-row { padding: 18px 24px; border-bottom: 1px solid #efe6d6; }
+.ingredient-row:last-child { border-bottom: 0; }
+.ingredient-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.ingredient-head label { font-weight: 600; }
+.ingredient-field { display: inline-flex; align-items: center; gap: 6px; }
+.ingredient-input { width: 120px; padding: 8px 10px; font: inherit; text-align: right; border: 1px solid #d8cbb4; border-radius: 6px; background: #fffdf8; }
+.ingredient-input:disabled { background: #f3eee4; color: #9b8f7d; }
+.ingredient-unit { color: var(--muted); font-size: 14px; }
+.ingredient-note { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
