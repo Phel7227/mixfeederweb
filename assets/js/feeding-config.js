@@ -64,7 +64,7 @@ window.FEEDING_CONFIG = {
   ],
   // Ingredient groups for the ingredient input. Organ is liver plus other secreting organs.
   groups: {
-    meat: { label: "Meat", parts: ["muscle"] },
+    meat: { label: "Muscle meat", parts: ["muscle"] },
     organ: { label: "Organ", parts: ["liver", "organs"] },
     bone: { label: "Bone", parts: ["bone"] },
     veg: { label: "Vegtable, Fruit and seeds", parts: ["veg"] }
