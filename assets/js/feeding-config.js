@@ -35,12 +35,12 @@ window.FEEDING_CONFIG = {
   ingredients: {
     // Muscle: 110 (UK calculator) to 165 (per-lb figures converted). Bone: 110 to 150 (meaty bone).
     // Liver: 100 to 135 (beef liver, USDA mirror). Organs: heart about 115, range 100 to 120.
-    // Vegetables and fruit: 25 per 100g (UK calculator), range 20 to 30.
+    // Vegtable, fruit and seeds: 25 per 100g (UK calculator), range 20 to 30.
     muscle: { label: "Muscle meat", kcalPer100g: { low: 110, high: 165 } },
     bone: { label: "Edible bone", kcalPer100g: { low: 110, high: 150 } },
     liver: { label: "Liver", kcalPer100g: { low: 100, high: 135 } },
     organs: { label: "Other secreting organs", kcalPer100g: { low: 100, high: 120 } },
-    veg: { label: "Vegetables and fruit", kcalPer100g: { low: 20, high: 30 } }
+    veg: { label: "Vegtable, Fruit and seeds", kcalPer100g: { low: 20, high: 30 } }
   },
   // Activity level 1 to 5: multiplier on top of the life-stage factor. Steps are even (0.2 apart).
   // Level 1 is the default. Hours and multipliers are PROPOSED, not yet confirmed by the owner.
@@ -67,16 +67,7 @@ window.FEEDING_CONFIG = {
     meat: { label: "Meat", parts: ["muscle"] },
     organ: { label: "Organ", parts: ["liver", "organs"] },
     bone: { label: "Bone", parts: ["bone"] },
-    veg: { label: "Vegetables and fruit", parts: ["veg"] }
-  },
-  // Recommended meat breakdown shown in small text under Meat, as a percentage of the raw portion.
-  // Owner-confirmed (MERO-22). Organ is not repeated here because it is its own group.
-  meatMix: {
-    confirmed: true,
-    styles: {
-      barf: { "Red meat": 40, "White meat": 25, "Fish": 5 },
-      "80-10-10": { "Red meat": 45, "White meat": 30, "Fish": 5 }
-    }
+    veg: { label: "Vegtable, Fruit and seeds", parts: ["veg"] }
   },
   styles: {
     barf: {

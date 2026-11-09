@@ -88,45 +88,13 @@
     note.hidden = true;
     li.appendChild(note);
 
-    var mix = null;
-    if (groupKey === "meat") {
-      mix = document.createElement("ul");
-      mix.className = "ingredient-mix";
-      li.appendChild(mix);
-    }
-
-    rows[groupKey] = { li: li, input: input, note: note, mix: mix };
+    rows[groupKey] = { li: li, input: input, note: note };
     input.addEventListener("input", function () {
       source = groupKey;
       update();
     });
     list.appendChild(li);
   });
-
-  // Small-text meat breakdown under Meat, as a list. Each part is its share of the meat grams,
-  // so the list follows the chosen style's ratio and the total meat weight. Owner-confirmed values only.
-  function renderMeatNote(styleKey) {
-    var meatMix = config.meatMix && config.meatMix.confirmed && config.meatMix.styles[styleKey];
-    var note = rows.meat.note;
-    var list = rows.meat.mix;
-    note.hidden = !meatMix;
-    list.hidden = !meatMix;
-    list.innerHTML = "";
-    if (!meatMix) {
-      note.textContent = "";
-      return;
-    }
-    var meatGrams = parseFloat(rows.meat.input.value);
-    var hasMeat = meatGrams > 0 && !rows.meat.input.disabled;
-    var total = Object.keys(meatMix).reduce(function (sum, name) { return sum + meatMix[name]; }, 0);
-    note.textContent = "Recommended ratio only";
-    Object.keys(meatMix).forEach(function (name) {
-      var li = document.createElement("li");
-      var amount = hasMeat ? Math.round(meatGrams * meatMix[name] / total) + " g" : "-";
-      li.textContent = name + " (" + meatMix[name] + "%): " + amount;
-      list.appendChild(li);
-    });
-  }
 
   // Groups that this style leaves out (share 0) are read-only, and their rows say so.
   function renderStyle(styleKey) {
@@ -180,7 +148,6 @@
     var styleKey = styleSelect.value;
     renderStyle(styleKey);
     recalc(styleKey);
-    renderMeatNote(styleKey);
   }
 
   styleSelect.addEventListener("change", update);

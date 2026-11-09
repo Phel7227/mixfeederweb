@@ -26,7 +26,7 @@ const CONFIRMED = {
     bone: { label: "Edible bone", kcalPer100g: { low: 90, high: 110 } },
     liver: { label: "Liver", kcalPer100g: { low: 120, high: 140 } },
     organs: { label: "Other secreting organs", kcalPer100g: { low: 110, high: 130 } },
-    veg: { label: "Vegetables and fruit", kcalPer100g: { low: 20, high: 40 } }
+    veg: { label: "Vegtable, Fruit and seeds", kcalPer100g: { low: 20, high: 40 } }
   },
   styles: {
     barf: { label: "BARF", split: { muscle: 0.70, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0.10 } },
