@@ -69,7 +69,7 @@
     var mix = config.meatMix && config.meatMix.confirmed && config.meatMix.styles[el.style.value];
     var show = el.group.value === "meat" && !!mix;
     el.meatMix.hidden = !show;
-    el.meatMix.textContent = show ? Object.keys(mix).map(function (name) {
+    el.meatMix.textContent = show ? "Recommended ratio only: " + Object.keys(mix).map(function (name) {
       return name + " " + mix[name] + "%";
     }).join(", ") : "";
   }
