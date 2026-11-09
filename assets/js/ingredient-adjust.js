@@ -88,9 +88,12 @@
     note.hidden = true;
     li.appendChild(note);
 
+    // Optional breakdown, closed by default. Each part is its share of this group's grams.
+    var breakdown = config.breakdowns && config.breakdowns[groupKey];
+    var details = null;
     var sub = null;
-    if (groupKey === "veg") {
-      var details = document.createElement("details");
+    if (breakdown) {
+      details = document.createElement("details");
       details.className = "ingredient-sub";
       var summary = document.createElement("summary");
       summary.textContent = "Show breakdown";
@@ -99,10 +102,8 @@
       details.appendChild(summary);
       details.appendChild(sub);
       li.appendChild(details);
-      rows[groupKey] = { li: li, input: input, note: note, details: details, sub: sub };
-    } else {
-      rows[groupKey] = { li: li, input: input, note: note };
     }
+    rows[groupKey] = { li: li, input: input, note: note, details: details, sub: sub, breakdown: breakdown };
     input.addEventListener("input", function () {
       source = groupKey;
       update();
@@ -124,19 +125,22 @@
     });
   }
 
-  // Vegetable breakdown: each part is its share of the vegetable grams.
-  function renderVegBreakdown() {
-    var sub = rows.veg.sub;
-    var vegGrams = parseFloat(rows.veg.input.value);
-    var hasVeg = vegGrams > 0 && !rows.veg.input.disabled;
-    var parts = config.vegBreakdown;
-    var total = Object.keys(parts).reduce(function (sum, name) { return sum + parts[name]; }, 0);
-    sub.innerHTML = "";
-    Object.keys(parts).forEach(function (name) {
-      var li = document.createElement("li");
-      var amount = hasVeg ? Math.round(vegGrams * parts[name] / total) + " g" : "-";
-      li.textContent = name + " (" + parts[name] + "%): " + amount;
-      sub.appendChild(li);
+  // Each breakdown part is its share of that group's grams, so the parts add up to the group.
+  function renderBreakdowns() {
+    Object.keys(rows).forEach(function (groupKey) {
+      var row = rows[groupKey];
+      if (!row.sub) return;
+      var grams = parseFloat(row.input.value);
+      var hasGrams = grams > 0 && !row.input.disabled;
+      var parts = row.breakdown;
+      var total = Object.keys(parts).reduce(function (sum, name) { return sum + parts[name]; }, 0);
+      row.sub.innerHTML = "";
+      Object.keys(parts).forEach(function (name) {
+        var li = document.createElement("li");
+        var amount = hasGrams ? Math.round(grams * parts[name] / total) + " g" : "-";
+        li.textContent = name + " (" + parts[name] + "%): " + amount;
+        row.sub.appendChild(li);
+      });
     });
   }
 
@@ -179,7 +183,7 @@
     var styleKey = styleSelect.value;
     renderStyle(styleKey);
     recalc(styleKey);
-    renderVegBreakdown();
+    renderBreakdowns();
   }
 
   styleSelect.addEventListener("change", update);
