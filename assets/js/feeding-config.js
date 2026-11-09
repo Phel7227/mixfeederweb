@@ -75,7 +75,7 @@ window.FEEDING_CONFIG = {
     confirmed: true,
     styles: {
       barf: { "Red meat": 40, "White meat": 25, "Fish": 5 },
-      prey: { "Red meat": 45, "White meat": 30, "Fish": 5 }
+      "80-10-10": { "Red meat": 45, "White meat": 30, "Fish": 5 }
     }
   },
   styles: {
@@ -83,8 +83,8 @@ window.FEEDING_CONFIG = {
       label: "BARF",
       split: { muscle: 0.70, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0.10 }
     },
-    prey: {
-      label: "Prey Model (PMR)",
+    "80-10-10": {
+      label: "80/10/10",
       split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 }
     }
   },

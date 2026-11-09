@@ -13,7 +13,7 @@ const CONFIG = {
   },
   styles: {
     barf: { split: { muscle: 0.70, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0.10 } },
-    prey: { split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 } }
+    "80-10-10": { split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 } }
   }
 };
 
@@ -38,7 +38,7 @@ test("entering organ grams uses liver and organs together", () => {
 });
 
 test("a style with no vegetables gives zero veg grams", () => {
-  const r = adjust.adjustRecipe(CONFIG, "prey", "bone", 20);
+  const r = adjust.adjustRecipe(CONFIG, "80-10-10", "bone", 20);
   assert.equal(r.rawTotal, 200);
   assert.equal(r.perIngredient.veg, 0);
   assert.equal(r.perIngredient.muscle, 160);
@@ -57,12 +57,12 @@ test("zero, negative or missing amounts give no result", () => {
 });
 
 test("a group with no share in the style gives no result", () => {
-  // PMR has no veg, so entering veg grams cannot set the raw total.
-  assert.equal(adjust.adjustRecipe(CONFIG, "prey", "veg", 50), null);
+  // 80/10/10 has no veg, so entering veg grams cannot set the raw total.
+  assert.equal(adjust.adjustRecipe(CONFIG, "80-10-10", "veg", 50), null);
 });
 
 test("unknown style or group gives no result", () => {
-  assert.equal(adjust.adjustRecipe(CONFIG, "80-10-10", "meat", 100), null);
+  assert.equal(adjust.adjustRecipe(CONFIG, "prey", "meat", 100), null);
   assert.equal(adjust.adjustRecipe(CONFIG, "barf", "fish", 100), null);
 });
 
