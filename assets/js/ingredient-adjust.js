@@ -88,7 +88,14 @@
     note.hidden = true;
     li.appendChild(note);
 
-    rows[groupKey] = { li: li, input: input, note: note };
+    var mix = null;
+    if (groupKey === "meat") {
+      mix = document.createElement("ul");
+      mix.className = "ingredient-mix";
+      li.appendChild(mix);
+    }
+
+    rows[groupKey] = { li: li, input: input, note: note, mix: mix };
     input.addEventListener("input", function () {
       source = groupKey;
       update();
@@ -96,14 +103,29 @@
     list.appendChild(li);
   });
 
-  // Small-text meat breakdown under Meat, for the chosen style. Owner-confirmed values only.
+  // Small-text meat breakdown under Meat, as a list. Each part is its share of the meat grams,
+  // so the list follows the chosen style's ratio and the total meat weight. Owner-confirmed values only.
   function renderMeatNote(styleKey) {
-    var mix = config.meatMix && config.meatMix.confirmed && config.meatMix.styles[styleKey];
+    var meatMix = config.meatMix && config.meatMix.confirmed && config.meatMix.styles[styleKey];
     var note = rows.meat.note;
-    note.hidden = !mix;
-    note.textContent = mix ? "Recommended ratio only: " + Object.keys(mix).map(function (name) {
-      return name + " " + mix[name] + "%";
-    }).join(", ") : "";
+    var list = rows.meat.mix;
+    note.hidden = !meatMix;
+    list.hidden = !meatMix;
+    list.innerHTML = "";
+    if (!meatMix) {
+      note.textContent = "";
+      return;
+    }
+    var meatGrams = parseFloat(rows.meat.input.value);
+    var hasMeat = meatGrams > 0 && !rows.meat.input.disabled;
+    var total = Object.keys(meatMix).reduce(function (sum, name) { return sum + meatMix[name]; }, 0);
+    note.textContent = "Recommended ratio only";
+    Object.keys(meatMix).forEach(function (name) {
+      var li = document.createElement("li");
+      var amount = hasMeat ? Math.round(meatGrams * meatMix[name] / total) + " g" : "-";
+      li.textContent = name + " (" + meatMix[name] + "%): " + amount;
+      list.appendChild(li);
+    });
   }
 
   // Groups that this style leaves out (share 0) are read-only, and their rows say so.
@@ -113,10 +135,10 @@
       var inStyle = groupShare(style.split, config.groups[groupKey]) > 0;
       var row = rows[groupKey];
       row.input.disabled = !inStyle;
+      if (!inStyle) row.input.value = "";
       row.note.hidden = inStyle;
       row.note.textContent = inStyle ? "" : "Not part of this style.";
     });
-    renderMeatNote(styleKey);
   }
 
   function clearOthers() {
@@ -126,10 +148,8 @@
   }
 
   // Set every row from the source row. Rows other than the source are overwritten.
-  function update() {
-    var styleKey = styleSelect.value;
+  function recalc(styleKey) {
     var style = config.styles[styleKey];
-    renderStyle(styleKey);
     errorNode.textContent = "";
     totalNode.textContent = "";
     if (!source) return;
@@ -154,6 +174,13 @@
       rows[groupKey].input.value = String(sum);
     });
     totalNode.textContent = "Raw total: " + result.rawTotal + " g (" + style.label + ")";
+  }
+
+  function update() {
+    var styleKey = styleSelect.value;
+    renderStyle(styleKey);
+    recalc(styleKey);
+    renderMeatNote(styleKey);
   }
 
   styleSelect.addEventListener("change", update);
