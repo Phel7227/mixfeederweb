@@ -62,6 +62,24 @@ window.FEEDING_CONFIG = {
     { min: 30, max: 40, low: 190, high: 290 },
     { min: 40, max: 50, low: 280, high: 380 }
   ],
+  // Ingredient groups for the ingredient input. Organ is liver plus other secreting organs.
+  groups: {
+    meat: { label: "Meat", parts: ["muscle"] },
+    organ: { label: "Organ", parts: ["liver", "organs"] },
+    bone: { label: "Bone", parts: ["bone"] },
+    veg: { label: "Vegetables and fruit", parts: ["veg"] }
+  },
+  // Recommended ratio shown in small text under Meat. Values are not set yet, so the hint stays hidden
+  // until the owner confirms them (set confirmed to true and fill in each share, as a percentage).
+  meatMix: {
+    confirmed: false,
+    options: {
+      "Red meat": null,
+      "White meat": null,
+      "Fish": null,
+      "Organ": null
+    }
+  },
   styles: {
     barf: {
       label: "BARF",
