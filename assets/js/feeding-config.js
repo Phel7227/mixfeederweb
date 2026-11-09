@@ -86,10 +86,6 @@ window.FEEDING_CONFIG = {
     prey: {
       label: "Prey Model (PMR)",
       split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 }
-    },
-    "80-10-10": {
-      label: "80/10/10",
-      split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 }
     }
   },
 };
