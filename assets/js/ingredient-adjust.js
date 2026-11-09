@@ -104,12 +104,63 @@
       li.appendChild(details);
     }
     rows[groupKey] = { li: li, input: input, note: note, details: details, sub: sub, breakdown: breakdown };
+    if (groupKey === "bone") rows[groupKey].mince = buildMince(li);
     input.addEventListener("input", function () {
       source = groupKey;
       update();
     });
     list.appendChild(li);
   });
+
+  // Bone can come from mince, which has some bone in it. The user says how much bone the mince has,
+  // and the page works out how much mince to buy. Default 100%, which means the grams are the mince.
+  function buildMince(li) {
+    var panel = document.createElement("details");
+    panel.className = "ingredient-sub";
+    var summary = document.createElement("summary");
+    summary.textContent = "Show mince";
+    var field = document.createElement("div");
+    field.className = "ingredient-mince";
+    var label = document.createElement("label");
+    label.htmlFor = "bone-mince-pct";
+    label.textContent = "Bone content in mince (%)";
+    var pct = document.createElement("input");
+    pct.type = "text";
+    pct.inputMode = "numeric";
+    pct.autocomplete = "off";
+    pct.id = "bone-mince-pct";
+    pct.className = "ingredient-input";
+    pct.value = "100";
+    var hint = document.createElement("p");
+    hint.className = "ingredient-note";
+    hint.textContent = "eg bone content in chicken mince";
+    field.appendChild(label);
+    field.appendChild(pct);
+    panel.appendChild(summary);
+    panel.appendChild(field);
+    panel.appendChild(hint);
+    var out = document.createElement("p");
+    out.className = "ingredient-note";
+    panel.appendChild(out);
+    li.appendChild(panel);
+    pct.addEventListener("input", renderMince);
+    return { details: panel, input: pct, out: out };
+  }
+
+  // Mince needed for the bone grams: bone grams divided by the bone share of the mince.
+  function renderMince() {
+    var mince = rows.bone.mince;
+    var boneGrams = parseFloat(rows.bone.input.value);
+    var hasBone = boneGrams > 0 && !rows.bone.input.disabled;
+    var share = Number(mince.input.value);
+    if (!hasBone) {
+      mince.out.textContent = "";
+    } else if (!(share > 0 && share <= 100)) {
+      mince.out.textContent = "Enter a percentage from 1 to 100.";
+    } else {
+      mince.out.textContent = "Mince needed: " + Math.round(boneGrams * 100 / share) + " g";
+    }
+  }
 
   // Groups that this style leaves out (share 0) are read-only, and their rows say so.
   function renderStyle(styleKey) {
@@ -184,6 +235,7 @@
     renderStyle(styleKey);
     recalc(styleKey);
     renderBreakdowns();
+    renderMince();
   }
 
   styleSelect.addEventListener("change", update);

@@ -184,3 +184,5 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 .ingredient-sub[hidden] { display: none; }
 .ingredient-mix { list-style: none; margin: 6px 0 0; padding: 0 0 0 12px; border-left: 2px solid #f3e3b5; }
 .ingredient-mix li { margin: 2px 0; }
+.ingredient-mince { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; }
+.ingredient-mince label { font-weight: 600; }
