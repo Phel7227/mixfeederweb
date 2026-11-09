@@ -125,17 +125,22 @@
     label.htmlFor = "bone-mince-pct";
     label.textContent = "Bone content in mince (%)";
     var pct = document.createElement("input");
-    pct.type = "text";
-    pct.inputMode = "numeric";
-    pct.autocomplete = "off";
+    pct.type = "range";
+    pct.min = "1";
+    pct.max = "100";
+    pct.step = "1";
     pct.id = "bone-mince-pct";
-    pct.className = "ingredient-input";
+    pct.className = "ingredient-range";
     pct.value = "100";
+    var readout = document.createElement("span");
+    readout.className = "ingredient-range-value";
+    readout.textContent = "100%";
     var hint = document.createElement("p");
     hint.className = "ingredient-note";
     hint.textContent = "eg bone content in chicken mince";
     field.appendChild(label);
     field.appendChild(pct);
+    field.appendChild(readout);
     panel.appendChild(summary);
     panel.appendChild(field);
     panel.appendChild(hint);
@@ -143,7 +148,10 @@
     out.className = "ingredient-note";
     panel.appendChild(out);
     li.appendChild(panel);
-    pct.addEventListener("input", renderMince);
+    pct.addEventListener("input", function () {
+      readout.textContent = pct.value + "%";
+      renderMince();
+    });
     return { details: panel, input: pct, out: out };
   }
 
