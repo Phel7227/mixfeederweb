@@ -69,21 +69,23 @@ window.FEEDING_CONFIG = {
     bone: { label: "Bone", parts: ["bone"] },
     veg: { label: "Vegetables and fruit", parts: ["veg"] }
   },
-  // Recommended ratio shown in small text under Meat. Values are not set yet, so the hint stays hidden
-  // until the owner confirms them (set confirmed to true and fill in each share, as a percentage).
+  // Recommended meat breakdown shown in small text under Meat, as a percentage of the raw portion.
+  // Owner-confirmed (MERO-22). Organ is not repeated here because it is its own group.
   meatMix: {
-    confirmed: false,
-    options: {
-      "Red meat": null,
-      "White meat": null,
-      "Fish": null,
-      "Organ": null
+    confirmed: true,
+    styles: {
+      barf: { "Red meat": 40, "White meat": 25, "Fish": 5 },
+      prey: { "Red meat": 45, "White meat": 30, "Fish": 5 }
     }
   },
   styles: {
     barf: {
       label: "BARF",
       split: { muscle: 0.70, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0.10 }
+    },
+    prey: {
+      label: "Prey Model (PMR)",
+      split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 }
     },
     "80-10-10": {
       label: "80/10/10",

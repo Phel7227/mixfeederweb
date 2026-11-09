@@ -65,3 +65,20 @@ test("unknown style or group gives no result", () => {
   assert.equal(adjust.adjustRecipe(CONFIG, "prey", "meat", 100), null);
   assert.equal(adjust.adjustRecipe(CONFIG, "barf", "fish", 100), null);
 });
+
+// The meat breakdown shown in the page must add up to the meat share of each style in feeding-config.js.
+test("meat breakdown matches the meat share of each style", () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const vm = require("node:vm");
+  const sandbox = { window: {} };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, "../../assets/js/feeding-config.js"), "utf8"), sandbox);
+  const cfg = sandbox.window.FEEDING_CONFIG;
+  assert.equal(cfg.meatMix.confirmed, true);
+  Object.keys(cfg.meatMix.styles).forEach((styleKey) => {
+    const mix = cfg.meatMix.styles[styleKey];
+    const total = Object.values(mix).reduce((a, b) => a + b, 0);
+    const meatShare = adjust.groupShare(cfg.styles[styleKey].split, cfg.groups.meat);
+    assert.equal(total, Math.round(meatShare * 100), styleKey);
+  });
+});

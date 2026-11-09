@@ -64,12 +64,14 @@
     return { value: key, label: config.styles[key].label };
   }));
 
-  // The meat hint stays hidden until the owner confirms the ratio.
-  if (config.meatMix && config.meatMix.confirmed) {
-    el.meatMix.hidden = false;
-    el.meatMix.textContent = Object.keys(config.meatMix.options).map(function (name) {
-      return name + " " + config.meatMix.options[name] + "%";
-    }).join(", ");
+  // Small-text meat breakdown under Meat, for the chosen style. Hidden for other groups and styles.
+  function renderMeatMix() {
+    var mix = config.meatMix && config.meatMix.confirmed && config.meatMix.styles[el.style.value];
+    var show = el.group.value === "meat" && !!mix;
+    el.meatMix.hidden = !show;
+    el.meatMix.textContent = show ? Object.keys(mix).map(function (name) {
+      return name + " " + mix[name] + "%";
+    }).join(", ") : "";
   }
 
   function row(label, value) {
@@ -79,6 +81,7 @@
   }
 
   function render() {
+    renderMeatMix();
     var grams = parseFloat(el.grams.value);
     var result = adjustRecipe(config, el.style.value, el.group.value, grams);
     el.results.innerHTML = "";
