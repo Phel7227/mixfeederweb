@@ -147,3 +147,12 @@ h1, h2, h3 { color: var(--blue-dark); line-height: 1.25; font-family: var(--roun
 #calc-mode legend { margin-bottom: 8px; }
 
 
+
+/* Site navigation */
+.site-nav { background: #f6c25c; color: #3d2213; border-bottom: 4px solid #3d2213; }
+.site-nav .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; flex-wrap: wrap; }
+.site-nav-brand { color: #3d2213; font-weight: 700; text-decoration: none; }
+.site-nav-links { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
+.site-nav-links a { color: #3d2213; font-weight: 600; text-decoration: none; }
+.site-nav-links a:hover, .site-nav-brand:hover { text-decoration: underline; }
+.site-nav a:focus-visible { outline: 3px solid #3d2213; outline-offset: 2px; }

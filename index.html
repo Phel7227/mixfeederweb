@@ -9,8 +9,17 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav">
+  <nav class="container" aria-label="Main">
+    <a class="site-nav-brand" href="#top">MixFeeder</a>
+    <ul class="site-nav-links">
+      <li><a href="#calculator">Calculator</a></li>
+      <li><a href="#ingredient">Ingredient</a></li>
+    </ul>
+  </nav>
+</header>
 <main id="main">
-<section class="hero">
+<section class="hero" id="top">
   <div class="container hero-inner">
     <div>
       <h1>MixFeeder Calculator</h1>
@@ -18,7 +27,7 @@
     </div>
   </div>
 </section>
-<section class="section calc">
+<section class="section calc" id="calculator">
   <div class="container">
     <p class="intro">Enter your dog's details and feeding plan to see a daily calorie target, the kibble and raw split, and a raw recipe in grams.</p>
     <div class="calc-disclaimer" role="note">
@@ -182,9 +191,33 @@
     <p class="form-note">Your pup's details will not be stored.</p>
   </div>
 </section>
+<section class="section calc" id="ingredient">
+  <div class="container">
+    <h2>Ingredient amounts</h2>
+    <p class="intro">Enter the grams of one ingredient group. The other groups are adjusted to keep the feeding style's ratio.</p>
+    <form class="enquiry-form calc-form" id="ingredient-form" novalidate>
+      <div class="field">
+        <label for="ingredient-group">Ingredient</label>
+        <select id="ingredient-group"></select>
+        <p class="field-hint" id="ingredient-meat-mix" hidden></p>
+      </div>
+      <div class="field">
+        <label for="ingredient-style">Feeding style</label>
+        <select id="ingredient-style"></select>
+      </div>
+      <div class="field">
+        <label for="ingredient-grams">Grams of this ingredient</label>
+        <input id="ingredient-grams" name="grams" type="text" inputmode="decimal" autocomplete="off">
+        <p class="field-error" id="ingredient-error" role="alert"></p>
+      </div>
+    </form>
+    <section class="calc-results" id="ingredient-results" aria-live="polite" hidden></section>
+  </div>
+</section>
 </main>
 <script src="assets/js/feeding-config.js?v=2026110504"></script>
 <script src="assets/js/calculator-core.js?v=2026110504"></script>
 <script src="assets/js/calculator.js?v=2026110504"></script>
+<script src="assets/js/ingredient-adjust.js?v=2026110504"></script>
 </body>
 </html>

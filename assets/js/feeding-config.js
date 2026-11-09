@@ -62,10 +62,30 @@ window.FEEDING_CONFIG = {
     { min: 30, max: 40, low: 190, high: 290 },
     { min: 40, max: 50, low: 280, high: 380 }
   ],
+  // Ingredient groups for the ingredient input. Organ is liver plus other secreting organs.
+  groups: {
+    meat: { label: "Meat", parts: ["muscle"] },
+    organ: { label: "Organ", parts: ["liver", "organs"] },
+    bone: { label: "Bone", parts: ["bone"] },
+    veg: { label: "Vegetables and fruit", parts: ["veg"] }
+  },
+  // Recommended meat breakdown shown in small text under Meat, as a percentage of the raw portion.
+  // Owner-confirmed (MERO-22). Organ is not repeated here because it is its own group.
+  meatMix: {
+    confirmed: true,
+    styles: {
+      barf: { "Red meat": 40, "White meat": 25, "Fish": 5 },
+      prey: { "Red meat": 45, "White meat": 30, "Fish": 5 }
+    }
+  },
   styles: {
     barf: {
       label: "BARF",
       split: { muscle: 0.70, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0.10 }
+    },
+    prey: {
+      label: "Prey Model (PMR)",
+      split: { muscle: 0.80, bone: 0.10, liver: 0.05, organs: 0.05, veg: 0 }
     },
     "80-10-10": {
       label: "80/10/10",
