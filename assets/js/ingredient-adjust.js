@@ -147,26 +147,42 @@
     var out = document.createElement("p");
     out.className = "ingredient-note";
     panel.appendChild(out);
+    var remaining = document.createElement("p");
+    remaining.className = "ingredient-note";
+    panel.appendChild(remaining);
     li.appendChild(panel);
     pct.addEventListener("input", function () {
       readout.textContent = pct.value + "%";
       renderMince();
     });
-    return { details: panel, input: pct, out: out };
+    return { details: panel, input: pct, out: out, remaining: remaining };
   }
 
   // Mince needed for the bone grams: bone grams divided by the bone share of the mince.
+  // The rest of the mince (mince grams minus bone grams) is muscle meat. Remaining muscle meat is the
+  // muscle meat row minus the muscle meat in that mince.
   function renderMince() {
     var mince = rows.bone.mince;
     var boneGrams = parseFloat(rows.bone.input.value);
     var hasBone = boneGrams > 0 && !rows.bone.input.disabled;
     var share = Number(mince.input.value);
+    var meatGrams = parseFloat(rows.meat.input.value);
+    var hasMeat = meatGrams > 0 && !rows.meat.input.disabled;
+    mince.remaining.textContent = "";
     if (!hasBone) {
       mince.out.textContent = "";
     } else if (!(share > 0 && share <= 100)) {
       mince.out.textContent = "Enter a percentage from 1 to 100.";
     } else {
-      mince.out.textContent = "Mince needed: " + Math.round(boneGrams * 100 / share) + " g";
+      var minceGrams = boneGrams * 100 / share;
+      mince.out.textContent = "Mince needed: " + Math.round(minceGrams) + " g";
+      if (hasMeat) {
+        var meatInMince = minceGrams - boneGrams;
+        var left = Math.round(meatGrams - meatInMince);
+        mince.remaining.textContent = left >= 0
+          ? "Remaining muscle meat: " + left + " g"
+          : "The mince already has more muscle meat than the total. Lower the bone or raise the meat.";
+      }
     }
   }
 
